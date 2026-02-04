@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Russo+One&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 84% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 84% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom Spider-Man Theme Variables */
+    --spider-red: 0 84% 50%;
+    --spider-red-glow: 0 100% 60%;
+    --spider-dark: 0 0% 4%;
+    --spider-black: 0 0% 8%;
+    --spider-white: 0 0% 98%;
+    --spider-gray: 0 0% 45%;
+
+    /* Gradients */
+    --gradient-spider: linear-gradient(135deg, hsl(0 84% 50%) 0%, hsl(0 100% 30%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 8%) 100%);
+    --gradient-glow: radial-gradient(circle, hsl(0 84% 50% / 0.3) 0%, transparent 70%);
+
+    /* Shadows */
+    --shadow-spider: 0 0 30px hsl(0 84% 50% / 0.4);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 60px hsl(0 84% 50% / 0.3);
+
+    /* Fonts */
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Russo One', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  /* Spider Web Background Pattern */
+  .spider-web-bg {
+    background-image: 
+      radial-gradient(circle at 50% 50%, transparent 30%, hsl(var(--spider-dark)) 100%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 0 L50 100 M0 50 L100 50 M0 0 L100 100 M100 0 L0 100' stroke='%23ffffff08' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='50' cy='50' r='45' stroke='%23ffffff05' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23ffffff05' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='50' cy='50' r='15' stroke='%23ffffff05' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+    background-size: cover, 200px 200px;
+  }
+
+  /* Spider Web Corner Decoration */
+  .spider-web-corner {
+    position: relative;
+  }
+
+  .spider-web-corner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M200 0 Q150 50 200 100 M200 0 Q100 30 200 60 M200 0 Q120 80 200 160 M200 0 Q80 40 160 200 M200 0 Q50 50 100 200 M200 0 Q30 80 0 200' stroke='%23dc262640' stroke-width='1' fill='none'/%3E%3C/svg%3E") no-repeat;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* Hero Title Styles */
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 15vw, 12rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 
+      0 0 20px hsl(var(--spider-red) / 0.5),
+      0 0 40px hsl(var(--spider-red) / 0.3),
+      0 0 60px hsl(var(--spider-red) / 0.2);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-heading);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  /* Glowing Button */
+  .btn-spider {
+    @apply relative overflow-hidden px-8 py-4 font-semibold uppercase tracking-wider transition-all duration-300;
+    background: var(--gradient-spider);
+    border: 2px solid hsl(var(--spider-red));
+    box-shadow: var(--shadow-spider);
+  }
+
+  .btn-spider:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-spider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--spider-white) / 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-spider:hover::before {
+    left: 100%;
+  }
+
+  /* Outline Button */
+  .btn-spider-outline {
+    @apply relative px-8 py-4 font-semibold uppercase tracking-wider transition-all duration-300;
+    background: transparent;
+    border: 2px solid hsl(var(--spider-white));
+    color: hsl(var(--spider-white));
+  }
+
+  .btn-spider-outline:hover {
+    background: hsl(var(--spider-white));
+    color: hsl(var(--spider-dark));
+  }
+
+  /* Card Styles */
+  .card-spider {
+    @apply relative overflow-hidden rounded-lg;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+  }
+
+  .card-spider:hover {
+    border-color: hsl(var(--spider-red) / 0.5);
+    box-shadow: var(--shadow-spider);
+    transform: translateY(-5px);
+  }
+
+  /* Section Title */
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Animated Web Line */
+  .web-line {
+    position: relative;
+  }
+
+  .web-line::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-spider);
+    box-shadow: var(--shadow-spider);
+  }
+
+  /* Glow Effect */
+  .glow-red {
+    box-shadow: var(--shadow-spider);
+  }
+
+  .glow-red-hover:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Text Gradient */
+  .text-gradient-spider {
+    background: var(--gradient-spider);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Navigation Styles */
+  .nav-link {
+    @apply relative py-2 text-sm font-medium uppercase tracking-wider transition-colors duration-300;
+    color: hsl(var(--spider-white) / 0.8);
+  }
+
+  .nav-link:hover {
+    color: hsl(var(--spider-red));
+  }
+
+  .nav-link.active {
+    color: hsl(var(--spider-red));
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: hsl(var(--spider-red));
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  /* Spider Animation */
+  @keyframes spider-swing {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  @keyframes web-shoot {
+    0% { transform: scaleX(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--spider-red) / 0.4); }
+    50% { box-shadow: 0 0 40px hsl(var(--spider-red) / 0.6); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-spider-swing {
+    animation: spider-swing 3s ease-in-out infinite;
+    transform-origin: top center;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Input Styles */
+  .input-spider {
+    @apply w-full px-4 py-3 rounded-lg transition-all duration-300;
+    background: hsl(var(--input));
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+  }
+
+  .input-spider:focus {
+    outline: none;
+    border-color: hsl(var(--spider-red));
+    box-shadow: 0 0 0 3px hsl(var(--spider-red) / 0.2);
+  }
+
+  .input-spider::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--spider-dark));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--spider-red));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--spider-red-glow));
+}

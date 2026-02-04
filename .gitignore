@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# env
+.env
+
+# builds
+build/
+dist/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+
+# editor
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# excel / office temp files
+~$*.xlsx
+*.xlsx
+*.xls
+
+# OS junk
+Thumbs.db
+desktop.ini
+
