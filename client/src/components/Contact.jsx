@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Linkedin, Instagram } from 'lucide-react';
 import { message } from 'antd';
 
 const Contact = () => {
@@ -67,14 +67,14 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'itzmani2005@gmail.com',
-      link: 'mailto:itzmani2005@gmail.com',
+      value: 'infoquest.gctcsea@gmail.com',
+      link: 'mailto:infoquest.gctcsea@gmail.com',
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+91 6369925623',
-      link: 'tel:+916369925623',
+      value: '+91 88385 24257',
+      link: 'tel:+91 8838524257',
     },
     {
       icon: MapPin,
@@ -87,11 +87,11 @@ const Contact = () => {
   const socialLinks = [
     { icon: Instagram, href: '#', label: 'Instagram' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: Mail, href: '#', label: 'GitHub' },
   ];
 
   return (
-    <section ref={sectionRef} id="contact" className="py-24 relative">
+    <section ref={sectionRef}  className="py-14 relative">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="section-title text-foreground mb-4">

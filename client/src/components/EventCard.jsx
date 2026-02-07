@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
-import { Clock, Users, Trophy } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Clock, Users, Trophy } from "lucide-react";
 
 const EventCard = ({
   title,
   description,
   category,
+  Time,
   duration,
   teamSize,
   prize,
@@ -28,7 +29,9 @@ const EventCard = ({
         <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="flex flex-col items-center text-center p-3 rounded-lg bg-secondary/50">
             <Clock className="w-4 h-4 text-primary mb-1" />
-            <span className="text-xs text-muted-foreground">{duration}</span>
+            <span className="text-xs text-muted-foreground">
+              {Time || duration}
+            </span>
           </div>
           <div className="flex flex-col items-center text-center p-3 rounded-lg bg-secondary/50">
             <Users className="w-4 h-4 text-primary mb-1" />

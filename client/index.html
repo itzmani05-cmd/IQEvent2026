@@ -1,26 +1,50 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
     <title>InfoQuest'26</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+   
   </head>
 
   <body>
+    <div class="loading-screen" id="loading-screen" style="display: flex; align-items: center; justify-content: center; flex-direction: column; background-color: #111; width: 100vw; height: 100vh;">
+      <div class="loading-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex-direction: column; ">
+        <img 
+          src="/src/assets/logopic.png" 
+          alt="InfoQuest Logo" 
+          class="loading-logo"
+          style="width: 110px; height: 110px;"
+        />
+        <div class="loading-text-container flex flex-col items-center justify-center">
+          <h1 class="loading-title" style="font-size: 2.5rem;">
+            INFO<span style="color: #dc2626;">QUEST'26</span>
+          </h1>
+        </div>
+        <div class="loading-spinner">
+          <div class="spinner-circle"></div>
+          <div class="spinner-circle"></div>
+          <div class="spinner-circle"></div>
+        </div>
+      </div>
+    </div>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.addEventListener('load', () => {
+        const loadingScreen = document.getElementById('loading-screen');
+
+        setTimeout(() => {
+          loadingScreen.style.opacity = '0';
+          loadingScreen.style.transition = 'opacity 0.8s ease';
+
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 800); 
+        }, 3000); 
+      });
+    </script>
+    
   </body>
 </html>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import {QRCodeCanvas} from "qrcode.react";
-import {useLocation} from 'react-router-dom';
 import gsap from 'gsap';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,9 +7,12 @@ import SpiderWebBackground from '@/components/SpiderWebBackground';
 import { Form, Input, Select, Button, message, Steps, Card, } from 'antd';
 import { UserOutlined, MailOutlined, PhoneOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
-const Register = () => {
-  const location= useLocation();
-  const selectedPage= location.state;
+const { Option } = Select;
+
+const Register = ({selectedPass, onBack}) => {
+  const amount = Number(selectedPass.amount);
+  const eventType = selectedPass.key;
+
   const [referralCode, setReferralCode] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [form] = Form.useForm();
@@ -19,7 +21,6 @@ const Register = () => {
 
   const UPI_ID = "Q301963269@ybl";
 
-  const amount = Number(selectedPage?.amount || 0);
   const payeeName= encodeURIComponent("CSEA - GCT Coimbatore");
   const upiLink =
     amount > 0
@@ -28,7 +29,6 @@ const Register = () => {
 
   const [paymentImage, setPaymentImage] = useState(null);
 
-
   useEffect(() => {
     gsap.fromTo(
       '.register-section',
@@ -36,9 +36,6 @@ const Register = () => {
       { y: 0, opacity: 1, duration: 0.6, stagger: 0.2, ease: 'power2.out' }
     );
   }, [currentStep]);
-
-  const eventType=selectedPage?.type||"UNKNOWN";
-
 
   const handleSubmit = async () => {
     try {
@@ -86,6 +83,14 @@ const Register = () => {
     { title: 'Confirmation', icon: <CheckCircleOutlined /> },
   ];
 
+  if (!selectedPass) {
+  return (
+    <div className="min-h-screen flex items-center justify-center text-muted-foreground">
+      Please select a pass first.
+    </div>
+  );
+}
+
   return (
     <div className="min-h-screen bg-background relative">
       <SpiderWebBackground />
@@ -93,6 +98,7 @@ const Register = () => {
 
       <section className="pt-32 pb-8 relative">
         <div className="container mx-auto px-4">
+          
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="hero-title text-foreground text-5xl md:text-7xl mb-4">
               <span className="text-primary">Register</span> Now
@@ -121,198 +127,206 @@ const Register = () => {
             size="large"
             className='mt-8'
           >
-
-          {currentStep === 0 && (
-            <div className="register-section card-spider p-8">
-              <h2 className="font-display text-3xl text-foreground mb-8">
-                Personal Information
-              </h2>
-
+        
+            {currentStep === 0 && (
+              <div className="register-section card-spider p-8">
+                
+                <h2 className="font-display text-3xl text-foreground mb-8">
+                  Personal Information
+                </h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <Form.Item
-                    name="name"
-                    label={<span className="text-foreground">Full Name</span>}
-                    rules={[{ required: true, message: 'Please enter your name' }]}
-                  >
-                    <Input
-                      prefix={<UserOutlined className="text-muted-foreground" />}
-                      placeholder="Peter Parker"
-                      className="input-spider"
-                    />
-                  </Form.Item>
-
-                  <Form.Item
-                    name="email"
-                    label={<span className="text-foreground">Email Address</span>}
-                    rules={[
-                      { required: true, message: 'Please enter your email' },
-                      { type: 'email', message: 'Please enter a valid email' },
-                    ]}
-                  >
-                    <Input
-                      prefix={<MailOutlined className="text-muted-foreground" />}
-                      placeholder="spider@web.com"
-                      className="input-spider"
-                    />
-                  </Form.Item>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Form.Item
-                    name="phone"
-                    label={<span className="text-foreground">Phone Number</span>}
-                    rules={[{ required: true, message: 'Please enter your phone number' }]}
-                  >
-                    <Input
-                      prefix={<PhoneOutlined className="text-muted-foreground" />}
-                      placeholder="+91 98765 43210"
-                      className="input-spider"
-                    />
-                  </Form.Item>
-
-                  <Form.Item
-                    name="college"
-                    label={<span className="text-foreground">College/University</span>}
-                    rules={[{ required: true, message: 'Please enter your college' }]}
-                  >
-                    <Input
-                      placeholder="Your College Name"
-                      className="input-spider"
-                    />
-                  </Form.Item>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Form.Item
-                    name="department"
-                    label={<span className="text-foreground">Department</span>}
-                    rules={[{ required: true, message: 'Please select your department' }]}
-                  >
-                    <Select
-                      placeholder="Select Department"
-                      className="w-full"
-                    >
-                      <Option value="cse">Computer Science</Option>
-                      <Option value="it">Information Technology</Option>
-                      <Option value="ece">Electronics & Communication</Option>
-                      <Option value="eee">Electrical Engineering</Option>
-                      <Option value="mech">Mechanical Engineering</Option>
-                      <Option value="civil">Civil Engineering</Option>
-                      <Option value="other">Other</Option>
-                    </Select>
-                  </Form.Item>
-
-                  <Form.Item
-                    name="year"
-                    label={<span className="text-foreground">Year of Study</span>}
-                    rules={[{ required: true, message: 'Please select your year' }]}
-                  >
-                    <Select
-                      placeholder="Select Year"
-                      className="w-full"
-                    >
-                      <Option value="1">1st Year</Option>
-                      <Option value="2">2nd Year</Option>
-                      <Option value="3">3rd Year</Option>
-                      <Option value="4">4th Year</Option>
-                    </Select>
-                  </Form.Item>
-                </div>
-
-                <div className="pt-6 flex justify-end">
-                  <button
-                    type="button"
-                    onClick={async()=>{
-                      const values= await form.validateFields();
-                      setFormValues(prev=>({...prev, ...values}));
-                      setCurrentStep(1);
-                    }}
-                    className="btn-spider rounded-lg"
-                  >
-                    Next: Payment
-                  </button>
-                </div>
-            </div>
-          )}
-
-          {currentStep === 1 && (
-            <div className="register-section card-spider p-8 space-y-8">
-              <h2 className="font-display text-3xl text-foreground text-center">
-                Complete Payment
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-6 items-center">
-                <div className="text-center rounded-2xl  border border-border p-6 shadow-lg">
-                  {amount >0 &&(
-                    <QRCodeCanvas
-                      value={upiLink}
-                      size={220}
-                      bgColor="#ffffff"
-                      fgColor="#000000"
-                    />
-                  )}
-                  <Card className="card-spider border border-border">
-                    <p className="text-xs text-muted-foreground">UPI ID</p>
-                    <p className="text-lg font-mono font-semibold text-primary">
-                      {UPI_ID}
-                    </p>
-                  </Card>
-                    
-                  <p className="text-muted-foreground mt-3">
-                    Scan & Pay ₹{amount}
-                  </p>
-                </div>
-
-                <div className="space-y-4">
                     <Form.Item
-                      name="usedReferralCode"
-                      label={<span className="text-foreground">Referral Code (optional)</span>}
+                      name="name"
+                      label={<span className="text-foreground">Full Name</span>}
+                      rules={[{ required: true, message: 'Please enter your name' }]}
                     >
                       <Input
-                        placeholder="Enter referral code (if any)"
+                        prefix={<UserOutlined className="text-muted-foreground" />}
+                        placeholder="Peter Parker"
                         className="input-spider"
                       />
                     </Form.Item>
-                    <Form.Item
-                      name="transactionId"
-                      label={<span className="text-foreground">UPI Transaction ID</span>}
-                      rules={[{ required: true, message: 'Enter transaction ID' }]}
-                    >
-                      <Input placeholder="Eg: 1234567890" />
-                    </Form.Item>
 
                     <Form.Item
-                      name="paymentProof"
-                      label={<span className="text-foreground">Upload Payment Screenshot</span>}
+                      name="email"
+                      label={<span className="text-foreground">Email Address</span>}
+                      rules={[
+                        { required: true, message: 'Please enter your email' },
+                        { type: 'email', message: 'Please enter a valid email' },
+                      ]}
                     >
                       <Input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setPaymentImage(e.target.files[0])}
+                        prefix={<MailOutlined className="text-muted-foreground" />}
+                        placeholder="spider@web.com"
+                        className="input-spider"
                       />
                     </Form.Item>
                 </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    <Form.Item
+                      name="phone"
+                      label={<span className="text-foreground">Phone Number</span>}
+                      rules={[{ required: true, message: 'Please enter your phone number' }]}
+                    >
+                      <Input
+                        prefix={<PhoneOutlined className="text-muted-foreground" />}
+                        placeholder="+91 98765 43210"
+                        className="input-spider"
+                      />
+                    </Form.Item>
+
+                    <Form.Item
+                      name="college"
+                      label={<span className="text-foreground">College/University</span>}
+                      rules={[{ required: true, message: 'Please enter your college' }]}
+                    >
+                      <Input
+                        placeholder="Your College Name"
+                        className="input-spider"
+                      />
+                    </Form.Item>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    <Form.Item
+                      name="department"
+                      label={<span className="text-foreground">Department</span>}
+                      rules={[{ required: true, message: 'Please select your department' }]}
+                    >
+                      <Select
+                        placeholder="Select Department"
+                        className="w-full"
+                      >
+                        <Option value="cse">Computer Science</Option>
+                        <Option value="it">Information Technology</Option>
+                        <Option value="ece">Electronics & Communication</Option>
+                        <Option value="eee">Electrical Engineering</Option>
+                        <Option value="mech">Mechanical Engineering</Option>
+                        <Option value="civil">Civil Engineering</Option>
+                        <Option value="other">Other</Option>
+                      </Select>
+                    </Form.Item>
+
+                    <Form.Item
+                      name="year"
+                      label={<span className="text-foreground">Year of Study</span>}
+                      rules={[{ required: true, message: 'Please select your year' }]}
+                    >
+                      <Select
+                        placeholder="Select Year"
+                        className="w-full"
+                      >
+                        <Option value="1">1st Year</Option>
+                        <Option value="2">2nd Year</Option>
+                        <Option value="3">3rd Year</Option>
+                        <Option value="4">4th Year</Option>
+                      </Select>
+                    </Form.Item>
+                </div>
+
+                <div className="pt-6 flex justify-between">
+                    <button
+                      type="button"
+                      onClick={onBack}
+                      className="px-5 py-2 rounded-lg border border-primary/40 text-primary
+                                hover:bg-primary hover:text-white transition-all duration-300 font-semibold uppercase"
+                    >
+                      Change Pass
+                    </button>
+                    <button
+                      type="button"
+                      onClick={async()=>{
+                        const values= await form.validateFields();
+                        setFormValues(prev=>({...prev, ...values}));
+                        setCurrentStep(1);
+                      }}
+                      className="btn-spider rounded-lg"
+                    >
+                      Next: Payment
+                    </button>
+                </div>
               </div>
+            )}
 
-              <div className="flex justify-between pt-6">
-                <button
+            {currentStep === 1 && (
+              <div className="register-section card-spider p-8 space-y-8">
+                <h2 className="font-display text-3xl text-foreground text-center">
+                  Complete Payment
+                </h2>
 
-                  onClick={() => setCurrentStep(0)}
-                  className="btn-spider-outline rounded-lg"
-                >
-                  Back
-                </button>
+                <div className="grid md:grid-cols-2 gap-6 items-center">
+                  <div className="text-center rounded-2xl  border border-border p-6 shadow-lg">
+                    {amount >0 &&(
+                      <QRCodeCanvas
+                        value={upiLink}
+                        size={220}
+                        bgColor="#ffffff"
+                        fgColor="#000000"
+                      />
+                    )}
+                    <Card className="card-spider border border-border">
+                      <p className="text-xs text-muted-foreground">UPI ID</p>
+                      <p className="text-lg font-mono font-semibold text-primary">
+                        {UPI_ID}
+                      </p>
+                    </Card>
+                      
+                    <p className="text-muted-foreground mt-3">
+                      Scan & Pay ₹{amount}
+                    </p>
+                  </div>
 
-                <button
-                  disabled={amount <=0}
-                  onClick={handleSubmit}
-                  className="btn-spider rounded-lg disabled:opacity-50"
-                >
-                  {loading?"Processing....":"Confirm Payment"}
-                </button>
+                  <div className="space-y-4">
+                      <Form.Item
+                        name="usedReferralCode"
+                        label={<span className="text-foreground">Referral Code (optional)</span>}
+                      >
+                        <Input
+                          placeholder="Enter referral code (if any)"
+                          className="input-spider"
+                        />
+                      </Form.Item>
+                      <Form.Item
+                        name="transactionId"
+                        label={<span className="text-foreground">UPI Transaction ID</span>}
+                        rules={[{ required: true, message: 'Enter transaction ID' }]}
+                      >
+                        <Input placeholder="Eg: 1234567890" />
+                      </Form.Item>
+
+                      <Form.Item
+                        name="paymentProof"
+                        label={<span className="text-foreground">Upload Payment Screenshot</span>}
+                      >
+                        <Input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => setPaymentImage(e.target.files[0])}
+                        />
+                      </Form.Item>
+                  </div>
+                </div>
+
+                <div className="flex justify-between pt-6">
+                  <button
+
+                    onClick={() => setCurrentStep(0)}
+                    className="btn-spider-outline rounded-lg"
+                  >
+                    Back
+                  </button>
+
+                  <button
+                    disabled={amount <=0}
+                    onClick={handleSubmit}
+                    className="btn-spider rounded-lg disabled:opacity-50"
+                  >
+                    {loading?"Processing....":"Confirm Payment"}
+                  </button>
+                </div>
               </div>
-            </div>
-          )}       
+            )}       
           </Form> 
 
           {currentStep === 2 && (

@@ -18,10 +18,8 @@ const SpiderWebBackground = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 mt-10 pointer-events-none overflow-hidden z-0">
-      {/* Top Right Web */}
+    <div className="fixed inset-0 mt-10 pointer-events-none overflow-hidden -z-10">
       <svg
-        ref={svgRef}
         className="absolute -top-20 -right-20 w-96 h-96 opacity-20"
         viewBox="0 0 400 400"
       >
