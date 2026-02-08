@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,useNavigate } from "react-router-dom";
 import logo from "../assets/logopic.png";
 import { Menu, X } from "lucide-react";
 import gsap from "gsap";
