@@ -1,15 +1,26 @@
 const { google } = require("googleapis");
-const path= require('path');
 
+/* ---------- LOAD CREDENTIALS FROM ENV ---------- */
+const credentials = JSON.parse(
+  process.env.GOOGLE_SERVICE_ACCOUNT_JSON
+);
+
+/* ---------- AUTH ---------- */
 const auth = new google.auth.GoogleAuth({
-  keyFile: path.join(process.env.GOOGLE_CREDENTIALS),
+  credentials,
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
-const sheets = google.sheets({ version: "v4", auth });
+/* ---------- SHEETS CLIENT ---------- */
+const sheets = google.sheets({
+  version: "v4",
+  auth,
+});
 
-const SPREADSHEET_ID = process.env.SPREDSHEET_ID; 
-"19tX9O00FCZ1hYYqIFQB8hxXSyVsvK4wzuhWQ7ithpiE"
+/* ---------- SPREADSHEET ID ---------- */
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
+
+/* ---------- APPEND ROW ---------- */
 async function appendRow(sheetName, row) {
   await sheets.spreadsheets.values.append({
     spreadsheetId: SPREADSHEET_ID,
@@ -21,10 +32,11 @@ async function appendRow(sheetName, row) {
   });
 }
 
+/* ---------- GET SHEET DATA ---------- */
 async function getSheetData(sheetName) {
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
-    range: `${sheetName}!A2:Z`,
+    range: sheetName,
   });
   return res.data.values || [];
 }
