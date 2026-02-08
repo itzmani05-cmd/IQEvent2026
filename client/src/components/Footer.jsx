@@ -1,22 +1,25 @@
-import { Link } from "react-router-dom";
 import { Instagram, Linkedin,Mail, MapPin, ArrowRight } from "lucide-react";
 import logo from "../assets/logopic.png";
 
 const Footer = () => {
   return (
     <footer className="bg-black text-muted-foreground">
-      <div className="max-w-7xl mx-auto px-6 py-14">
+      <div className="max-w-7xl mx-auto px-6 py-10 pb-5">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-5">
-            <div className="flex items-center">
+            <div className="flex items-center justi">
               <img
                 src={logo}
                 alt="InfoQuest Logo"
                 className="w-11 h-11 object-contain"
               />
-              <h2 className="text-2xl font-semibold text-white">
-                INFO<span className="text-primary">QUEST</span>'26
-              </h2>
+              <span className="font-display font-bold text-2xl tracking-[0.15em] text-white uppercase">
+                INFO
+                <span className="text-primary">QUEST</span>
+                <sup className="text-primary text-sm font-extrabold ml-2 tracking-widest">
+                  '26
+                </sup>
+              </span>
             </div>
 
             <p className="text-sm leading-relaxed">
@@ -25,15 +28,18 @@ const Footer = () => {
               Tamil Nadu
             </p>
 
-            <a
-              href="https://www.google.com/maps/place/Government+College+of+Technology,+Coimbatore"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:underline"
-            >
-              <MapPin size={16} />
-              Get Directions <ArrowRight size={14} />
-            </a>
+            <div className="space-y-4">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Department+of+CSE+-+Government+College+of+Technology,+Coimbatore"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition"
+              >
+                <MapPin size={16} />
+                Get Directions
+                <ArrowRight size={14} />
+              </a>
+            </div>
           </div>
 
           <div>
@@ -54,30 +60,6 @@ const Footer = () => {
                 <span className="text-white font-medium">Email:</span>
                 <br /> infoquest.gctcsea@gmail.com
               </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-primary font-semibold mb-6 tracking-wide">
-              QUICK LINKS
-            </h4>
-
-            <ul className="space-y-4 text-sm">
-              {[
-                { name: "Home", path: "/" },
-                { name: "About", path: "/about" },
-                { name: "Events", path: "/events" },
-                { name: "Register", path: "/register" },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="hover:text-primary transition"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
             </ul>
           </div>
 
@@ -117,7 +99,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-zinc-800 mt-12 pt-6 text-xs flex flex-col md:flex-row justify-between items-center gap-3">
           <p>© 2026 InfoQuest. All rights reserved.</p>
         </div>

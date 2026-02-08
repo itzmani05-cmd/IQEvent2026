@@ -1,9 +1,33 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import SpiderWebBackground from '@/components/SpiderWebBackground';
+import FAQDropDown from './FAQDropDown';
 
 const ContactPage = () => {
+  const faqs=[ 
+  { 
+    q: 'When and where is InfoQuest\'26 being held?', 
+    a: 'InfoQuest\'26 will be held on February 20, 2026, at Government College of Technology, Coimbatore.', 
+  }, 
+  { 
+    q: 'How can I register for events?', 
+    a: 'You can register for events through our official website. Click on the \'Register\' button in the navigation menu or visit the specific event page to complete your registration.', 
+  }, 
+  { 
+    q: 'Is there a participation certificate?', 
+    a: 'Yes, all participants will receive an e-certificate of participation.', 
+  }, 
+  { 
+    q: 'What is referral code?', 
+    a: 'A referral code is a unique code generated during registration that allows you to earn cashback by inviting friends.', 
+  }, 
+  { 
+    q: 'How can I generate a referral code?', 
+    a: 'Your referral code is automatically generated after you complete registration.', 
+  }, 
+  { q: 'With how many people can I share the referral code?', 
+    a: 'You can share your referral code with multiple people - there\'s no limit!', 
+  } 
+];
+
   return (
     <div className="min-h-screen bg-background relative" id="contact">
 
@@ -99,40 +123,7 @@ const ContactPage = () => {
             </h2>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
-            {[
-              {
-                q: 'When and where is InfoQuest\'26 being held?',
-                a: 'InfoQuest\'26 will be held on February 20, 2026, at Government College of Technology, Coimbatore.',
-              },
-              {
-                q: 'How can I register for events?',
-                a: 'You can register for events through our official website. Click on the \'Register\' button in the navigation menu or visit the specific event page to complete your registration.',
-              },
-              {
-                q: 'Is there a participation certificate?',
-                a: 'Yes, all participants will receive an e-certificate of participation.',
-              },
-              {
-                q: 'What is referral code?',
-                a: 'A referral code is a unique code generated during registration that allows you to earn cashback by inviting friends.',
-              },
-              {
-                q: 'How can I generate a referral code?',
-                a: 'Your referral code is automatically generated after you complete registration.',
-              },
-              {
-                q: 'With how many people can I share the referral code?',
-                a: 'You can share your referral code with multiple people - there\'s no limit!',
-              },
-              
-            ].map((faq, index) => (
-              <div key={index} className="card-spider p-6">
-                <h4 className="font-semibold text-foreground mb-2">{faq.q}</h4>
-                <p className="text-muted-foreground">{faq.a}</p>
-              </div>
-            ))}
-          </div>
+          <FAQDropDown faqs={faqs}/>
         </div>
       </section>
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import heroImage from "@/assets/hero-spiderman.jpg";
+import CountDownTheTime from './CountDownTheTime';
 
 const HeroSection = () => {
   const containerRef = useRef(null);
@@ -132,7 +133,7 @@ const HeroSection = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto px-4">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto px-4">
           <div className="event-info card-spider p-4 sm:p-6 text-center">
             <div className="text-3xl sm:text-4xl font-display text-primary mb-2">
               12+
@@ -157,14 +158,13 @@ const HeroSection = () => {
               Participants
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <CountDownTheTime/>
+        
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-primary rounded-full animate-pulse" />
-        </div>
-      </div>
+      
     </section>
   );
 };
