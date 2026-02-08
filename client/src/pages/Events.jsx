@@ -392,6 +392,7 @@ const Events = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
+     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     gsap.fromTo(
       ".event-card-animate",
       { y: 50, opacity: 0 },
