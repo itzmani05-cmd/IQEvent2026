@@ -42,18 +42,15 @@ const upload = multer({
   },
 });
 
-/* ---------- HELPERS ---------- */
 function generateReferralCode() {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
 
-/* ---------- REGISTER API ---------- */
 app.post("/register", upload.single("paymentProof"), async (req, res) => {
   try {
     const REG_SHEET = "Registrations";
     const REF_SHEET = "Referrals";
 
-    /* ---------- VALIDATE FIELDS ---------- */
     const requiredFields = [
       "name",
       "email",
