@@ -88,7 +88,6 @@ const Contact = () => {
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/infoquest_gctcsea?igsh=MTJmM2JiOXhuMW4yYg==', label: 'Instagram' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/cseagct/', label: 'LinkedIn' },
-    { icon: Mail, href: 'infoquest.gctcsea@gmail.com', label: 'GitHub' },
   ];
 
   return (

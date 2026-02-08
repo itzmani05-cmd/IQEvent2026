@@ -8,22 +8,28 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
-    { name: "Home", path: "home" },
-    { name: "About", path: "about" },
+    { name: "Home", path: "/" },
+    { name: "About", id: "about" },
     { name: "Events", path: "/events" },
     { name: "Contact", id: "contact" },
   ];
 
   const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    if (location.pathname !== "/") {
+      navigate("/", { replace: false });
+
+      setTimeout(() => {
+        const section = document.getElementById(id);
+        section?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    } else {
+      const section = document.getElementById(id);
+      section?.scrollIntoView({ behavior: "smooth" });
     }
+
     setIsOpen(false);
   };
 
