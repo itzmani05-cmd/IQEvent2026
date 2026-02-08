@@ -85,15 +85,15 @@ const HeroSection = () => {
           className="text-xs sm:text-sm md:text-base text-muted-foreground uppercase tracking-widest mb-6 md:mb-8 px-4"
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-1 sm:gap-2">
-            <span className="text-foreground font-medium">Feb 16</span>
+            <span className="text-foreground font-medium">Feb 20</span>
             <span className="hidden sm:inline">|</span>
             <span>Government College Of Technology</span>
-            <span className="hidden sm:inline">|</span>
+            <span className="hidden sm:inline">-</span>
             <span>Coimbatore</span>
           </div>
 
           <div className="mt-2 text-primary font-medium">
-            Dept of CSE Conducting
+            CSE Association Presents
           </div>
         </div>
 
