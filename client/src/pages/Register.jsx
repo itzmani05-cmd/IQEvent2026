@@ -75,7 +75,11 @@ const Register = ({selectedPass, onBack}) => {
       formData.append("paymentProof",paymentImage);
       console.log("API URL:", import.meta.env.VITE_API_URL);
 
-      const res= await fetch(`${import.meta.env.VITE_API_URL}/register`, {
+      const API_URL =import.meta.env.VITE_API_URL;
+
+      console.log("API URL:", API_URL);
+
+      const res = await fetch(`${API_URL}/register`, {
         method: "POST",
         body: formData
       });
