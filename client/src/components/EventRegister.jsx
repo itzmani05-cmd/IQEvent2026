@@ -160,7 +160,7 @@ const EventRegister = ({ }) => {
     });
   };
 
-  const handleSelect = (key) => {
+  const handleSelect = (event) => {
    selectedPass(event);
   };
 
