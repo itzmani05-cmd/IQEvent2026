@@ -4,47 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>InfoQuest'26</title>
-   
+    <link rel="icon" type="image/png" href="/logopic.png" />
+    <link rel="apple-touch-icon" href="/logopic.png" />
+    <meta name="theme-color" content="#111111" />
+
+    <style>
+      body {
+        margin: 0;
+        background-color: #111;
+      }
+    </style>
   </head>
 
   <body>
-    <div class="loading-screen" id="loading-screen" style="display: flex; align-items: center; justify-content: center; flex-direction: column; background-color: #111; width: 100vw; height: 100vh;">
-      <div class="loading-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex-direction: column; ">
-        <img 
-          src="/src/assets/logopic.png" 
-          alt="InfoQuest Logo" 
-          class="loading-logo"
-          style="width: 110px; height: 110px;"
-        />
-        <div class="loading-text-container flex flex-col items-center justify-center">
-          <h1 class="loading-title" style="font-size: 2.5rem;">
-            INFO<span style="color: #dc2626;">QUEST'26</span>
-          </h1>
-        </div>
-        <div class="loading-spinner">
-          <div class="spinner-circle"></div>
-          <div class="spinner-circle"></div>
-          <div class="spinner-circle"></div>
-        </div>
-      </div>
-    </div>
-    
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script>
-      window.addEventListener('load', () => {
-        const loadingScreen = document.getElementById('loading-screen');
-
-        setTimeout(() => {
-          loadingScreen.style.opacity = '0';
-          loadingScreen.style.transition = 'opacity 0.8s ease';
-
-          setTimeout(() => {
-            loadingScreen.style.display = 'none';
-          }, 800); 
-        }, 3000); 
-      });
-    </script>
-    
   </body>
 </html>

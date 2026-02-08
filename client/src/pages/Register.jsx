@@ -274,12 +274,14 @@ const Register = ({selectedPass, onBack}) => {
                 <div className="grid md:grid-cols-2 gap-6 items-center">
                   <div className="text-center rounded-2xl  border border-border p-6 shadow-lg">
                     {amount >0 &&(
-                      <QRCodeCanvas
-                        value={upiLink}
-                        size={220}
-                        bgColor="#ffffff"
-                        fgColor="#000000"
-                      />
+                      <div className="inline-block p-4 bg-white rounded-xl shadow-lg">
+                        <QRCodeCanvas
+                          value={upiLink}
+                          size={220}
+                          bgColor="#ffffff"
+                          fgColor="#000000"
+                        />
+                      </div>
                     )}
                     <Card className="card-spider border border-border">
                       <p className="text-xs text-muted-foreground">UPI ID</p>

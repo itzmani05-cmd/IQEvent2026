@@ -141,7 +141,7 @@ app.post("/register", upload.single("paymentProof"), async (req, res) => {
 });
 
 app.get("/", (_, res) => {
-  res.send("Server running successfully 🚀");
+  res.send("Server running successfully");
 });
 
 app.use((err, req, res, next) => {
