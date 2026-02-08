@@ -334,7 +334,7 @@ const eventsData = [
     title: "IPL Auction",
     description:
       "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
-    category: "Fun",
+    category: "Fun Event",
     Time: "11:30 AM – 01:00 PM",
     venue: "Main Auditorium",
     teamSize: "Team of 2–5 members",
@@ -359,7 +359,7 @@ const eventsData = [
     title: "Treasure Hunt",
     description:
       "Get your team and navigate throughout the GCT campus looking out for QR codes and checkpoints to find the treasure.",
-    category: "Fun",
+    category: "Fun Event",
     Time: "01:30 PM – 02:30 PM",
     venue: "Open Space",
     teamSize: "Team of 2–5 members",
@@ -392,7 +392,10 @@ const Events = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
     gsap.fromTo(
       ".event-card-animate",
       { y: 50, opacity: 0 },
@@ -458,7 +461,7 @@ const Events = () => {
               Our <span className="text-primary">Events</span>
             </h1>
             <p className="text-muted-foreground text-lg">
-              Explore 12+ exciting events across technical and non-technical
+              Explore 12+ exciting events across Technical and Non-Technical
               categories.
             </p>
           </div>
