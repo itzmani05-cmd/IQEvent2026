@@ -19,31 +19,31 @@ gsap.config({
 
 const featuredEvents = [
   {
-    title: "Web Slinger Hackathon",
+    title: "Presentrix",
     description:
-      "Build innovative solutions in 24 hours. Show your coding prowess and swing into action!",
+      "Presentrix is a technical presentation contest that provides a platform for participants to showcase their knowledge, ideas, and innovations in Computer Science and emerging technologies. The event evaluates technical depth, creativity, and communication skills, challenging participants to present their concepts clearly and confidently.",
     category: "Technical",
-    duration: "24 Hours",
-    teamSize: "2-4",
-    prize: "₹15,000",
+    duration: "10:15 AM - 01:00 PM",
+    teamSize: "Individual/Team",
+    prize: "₹1,500",
   },
   {
-    title: "Spider Sense Quiz",
+    title: "Code Quest",
     description:
-      "Test your technical knowledge across multiple domains. Trust your spider sense!",
+      "Step into Code Quest, a high-energy Hacker Rank coding contest that puts your logic, speed, and accuracy to the test. Solve challenging programming problems within a limited time and earn points for every correct solution. Outperform your peers, climb the leaderboard, and prove your coding prowess under pressure.",
     category: "Technical",
-    duration: "2 Hours",
+    duration: "11:00 AM - 11:45 AM",
     teamSize: "Individual",
-    prize: "₹5,000",
+    prize: "₹1,300",
   },
   {
-    title: "Venom Gaming",
+    title: "IPL Auction",
     description:
-      "Compete in epic gaming battles. Valorant, BGMI, and more await you!",
-    category: "Non-Technical",
-    duration: "3 Hours",
-    teamSize: "5",
-    prize: "₹10,000",
+      "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
+    category: "Fun Event",
+    duration: "11:30 AM - 01:00 PM",
+    teamSize: "Team of 2-5 members",
+    prize: "₹1,500",
   },
 ];
 
