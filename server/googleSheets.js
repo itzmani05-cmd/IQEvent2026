@@ -2,14 +2,14 @@ const { google } = require("googleapis");
 const path= require('path');
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: path.join(__dirname,"credentials.json"),
+  keyFile: path.join(process.env.GOOGLE_CREDENTIALS),
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
 const sheets = google.sheets({ version: "v4", auth });
 
-const SPREADSHEET_ID = "19tX9O00FCZ1hYYqIFQB8hxXSyVsvK4wzuhWQ7ithpiE"; 
-
+const SPREADSHEET_ID = process.env.SPREDSHEET_ID; 
+"19tX9O00FCZ1hYYqIFQB8hxXSyVsvK4wzuhWQ7ithpiE"
 async function appendRow(sheetName, row) {
   await sheets.spreadsheets.values.append({
     spreadsheetId: SPREADSHEET_ID,
