@@ -19,8 +19,11 @@ const Register = ({selectedPass, onBack}) => {
     );
   };
 
-  const amount = Number(selectedPass.amount);
+  const amount = Number(selectedPass.price);
   const eventType = selectedPass.key;
+  console.log("Selected Pass:", selectedPass);
+  console.log("Amount:", amount);
+
 
   const [referralCode, setReferralCode] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
