@@ -44,6 +44,7 @@ const featuredEvents = [
     duration: "11:30 AM - 01:00 PM",
     teamSize: "Team of 2-5 members",
     prize: "₹1,500",
+    onSpot:true
   },
 ];
 
