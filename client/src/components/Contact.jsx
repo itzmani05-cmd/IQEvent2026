@@ -36,6 +36,16 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(!isValidEmail(formData.email)){
+      message.error("Please enter a valid email address");
+      return;
+    }
+
+    if (!isValidPhone(formData.phone)) {
+      message.error("Please enter a valid 10-digit phone number");
+      return;
+    }
+
     emailjs
       .send(import.meta.env.VITE_EMAILJS_SERVICE_ID,
             import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -55,8 +65,6 @@ const Contact = () => {
           message.error("Failed to send message");
           console.log(error);
         });
-
-    
   };
 
   const handleChange = (e) => {
@@ -89,6 +97,12 @@ const Contact = () => {
     { icon: Instagram, href: 'https://www.instagram.com/infoquest_gctcsea?igsh=MTJmM2JiOXhuMW4yYg==', label: 'Instagram' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/cseagct/', label: 'LinkedIn' },
   ];
+
+  const isValidEmail = (email) => {
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    return emailRegex.test(email);
+  };
 
   return (
     <section ref={sectionRef}  className="py-14 relative">
@@ -166,7 +180,11 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     placeholder="spider@web.com"
-                    className="input-spider"
+                    className={`input-spider ${
+                      formData.email && !isValidEmail(formData.email)
+                        ? "border-red-500 focus:border-red-500"
+                        : ""
+                    }`}
                   />
                 </div>
               </div>

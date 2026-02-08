@@ -47,17 +47,19 @@ const Register = ({selectedPass, onBack}) => {
   }, [currentStep]);
 
   const handleSubmit = async () => {
+    if(loading)
+      return;
     try {
+      setLoading(true);
       const value= await form.validateFields([
          "usedReferralCode",
           "transactionId"
       ]); 
+    
       if(!paymentImage){
         message.error("Please upload payment screenshot");
         return;
       }     
-      setLoading(true);
-
       const finalData={
         ...formValues,
         ...value,
@@ -70,20 +72,15 @@ const Register = ({selectedPass, onBack}) => {
       });
       
       formData.append("paymentProof",paymentImage);
-      console.log("API URL:", import.meta.env.VITE_API_URL);
 
       const API_URL =import.meta.env.VITE_API_URL;
-
-      console.log("API URL:", API_URL);
 
       const res = await fetch(`${API_URL}/register`, {
         method: "POST",
         body: formData
       });
       
-      
       const data=await res.json();
-      console.log(data);
       setReferralCode(data.referralCode);
       message.success("Registration successfull!");
       setCurrentStep(2);
@@ -178,12 +175,17 @@ const Register = ({selectedPass, onBack}) => {
                     <Form.Item
                       name="phone"
                       label={<span className="text-foreground">Phone Number</span>}
-                      rules={[{ required: true, message: 'Please enter your phone number' }]}
+                      rules={[{ required: true, message: 'Please enter your phone number' },
+                        {pattern:/^[6-9]\d{9}$/,
+                          message:"Enter a valid 10-digit phone number"
+                        }
+                      ]}
                     >
                       <Input
                         prefix={<PhoneOutlined className="text-muted-foreground" />}
-                        placeholder="+91 98765 43210"
+                        placeholder="9876543210"
                         className="input-spider"
+                        maxLength={10}
                       />
                     </Form.Item>
 
@@ -338,9 +340,10 @@ const Register = ({selectedPass, onBack}) => {
                   </button>
 
                   <button
-                    disabled={amount <=0}
+                    type="button"
+                    disabled={loading || amount <=0}
                     onClick={handleSubmit}
-                    className="btn-spider rounded-lg disabled:opacity-50"
+                    className="btn-spider rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading?"Processing....":"Confirm Payment"}
                   </button>
