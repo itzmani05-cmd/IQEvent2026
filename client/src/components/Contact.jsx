@@ -75,6 +75,7 @@ const Contact = () => {
       title: 'Phone',
       value: '+91 88385 24257',
       link: 'tel:+91 88385 24257',
+
     },
     {
       icon: MapPin,
@@ -85,9 +86,9 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: '#', label: 'GitHub' },
+    { icon: Instagram, href: 'https://www.instagram.com/infoquest_gctcsea?igsh=MTJmM2JiOXhuMW4yYg==', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/cseagct/', label: 'LinkedIn' },
+    { icon: Mail, href: 'infoquest.gctcsea@gmail.com', label: 'GitHub' },
   ];
 
   return (
