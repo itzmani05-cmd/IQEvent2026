@@ -10,8 +10,7 @@ import { UserOutlined, MailOutlined, PhoneOutlined, CheckCircleOutlined } from '
 const { Option } = Select;
 
 const Register = ({selectedPass, onBack}) => {
-  const amount = Number(selectedPass.amount);
-  const eventType = selectedPass.key;
+  
 
   const [referralCode, setReferralCode] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
@@ -92,6 +91,8 @@ const Register = ({selectedPass, onBack}) => {
     </div>
   );
 }
+const amount = Number(selectedPass.amount);
+const eventType = selectedPass.key;
 
   return (
     <div className="min-h-screen bg-background relative">
