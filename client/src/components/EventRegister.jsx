@@ -161,7 +161,7 @@ const EventRegister = ({ }) => {
   };
 
   const handleSelect = (event) => {
-   selectedPass(event);
+   setselectedPass(event);
   };
 
   if(selectedPass){
