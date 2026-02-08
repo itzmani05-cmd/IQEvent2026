@@ -21,7 +21,7 @@ const ContactPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="card-spider p-6">
               <h3 className="text-xl font-semibold text-primary mb-6 border-b border-primary/20 pb-2">
-                Designate Contact
+                Designated Contact
               </h3>
 
               <div className="space-y-4">
@@ -35,7 +35,7 @@ const ContactPage = () => {
                   >
                     <div>
                       <p className="text-foreground font-medium">{person.name}</p>
-                      <p className="text-muted-foreground text-sm">Event Coordinator</p>
+                      <p className="text-muted-foreground text-sm">Event Coordinated</p>
                     </div>
                     <a
                       href={`tel:${person.phone}`}

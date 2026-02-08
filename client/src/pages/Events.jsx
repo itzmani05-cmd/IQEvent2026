@@ -443,7 +443,7 @@ const Events = () => {
               Our <span className="text-primary">Events</span>
             </h1>
             <p className="text-muted-foreground text-lg">
-              Explore {eventsData.length}+ exciting events across technical and non-technical
+              Explore 12+ exciting events across technical and non-technical
               categories.
             </p>
           </div>
