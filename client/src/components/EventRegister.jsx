@@ -116,8 +116,8 @@ const EventRegister = ({ }) => {
     title: "IPL Auction",
     subtitle: "Flagship Event",
     description:
-      "Experience the thrill of a real-time IPL-style auction. Build your dream team with strategy and budget.",
-    price: 79,
+      "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
+    price: 249,
     icon: Trophy,
     teamSize: "2–5 Members",
     highlights: [
@@ -126,14 +126,15 @@ const EventRegister = ({ }) => {
       "Exciting prizes",
     ],
     accent: "gold",
+    onSpot:true
   },
   {
     key: "treasure",
     title: "Treasure Hunt",
     subtitle: "Adventure & Teamwork",
     description:
-      "Solve clues, crack codes, and race across the campus to uncover the hidden treasure.",
-    price: 79,
+      "Get your team and navigate throughout the GCT campus looking out for QR codes and checkpoints to find the treasure.",
+    price: 249,
     icon: Trophy,
     teamSize: "2-5 Members",
     highlights: [
@@ -142,6 +143,7 @@ const EventRegister = ({ }) => {
       "High-energy teamwork",
     ],
     accent: "red",
+    onSpot:true
   },
   ];
 
@@ -161,6 +163,7 @@ const EventRegister = ({ }) => {
   };
 
   const handleSelect = (event) => {
+    if(event.onSpot) return;
    setSelectedPass(event);
   };
 
@@ -172,6 +175,8 @@ const EventRegister = ({ }) => {
       </div>
     )
   }
+
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary relative overflow-hidden">
@@ -196,14 +201,21 @@ const EventRegister = ({ }) => {
               key={event.key}
               hoverable
               onClick={() => handleSelect(event)}
-              className="event-pass-card border-2 border-border rounded-2xl bg-card/60 backdrop-blur-xl
+              className={`relative event-pass-card border-2 border-border rounded-2xl bg-card/60 backdrop-blur-xl
                          hover:border-primary hover:bg-primary/5 hover:shadow-2xl hover:shadow-primary/30
                          transition-all duration-300 cursor-pointer group
-                         transform hover:-translate-y-3 hover:scale-[1.03]"
+                         transform hover:-translate-y-3 hover:scale-[1.03]  ${event.onSpot ? "cursor-not-allowed opacity-90" : "cursor-pointer"} `}
               styles={{ body: { padding: "1.5rem" } }}
               onMouseEnter={(e) => onEnter(e.currentTarget)}
               onMouseLeave={(e) => onLeave(e.currentTarget)}
             >
+
+              {event.onSpot && (
+                <span className="absolute rounded-full">
+                
+                </span>
+              )}
+
               <div className="flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
                   <div className="event-icon p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
@@ -227,10 +239,15 @@ const EventRegister = ({ }) => {
                   {event.description}
                 </p>
 
-                <div className="flex items-center pt-4 border-t border-border/50">
-                  <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                    Register Now
-                  </span>
+                <div className="flex items-center gap-2 pt-4 border-t border-border/50">
+                <span
+                  className={`text-xs font-medium uppercase tracking-wider
+                    ${event.onSpot ? "text-orange-400" : "text-primary"}`}
+                >
+                  {event.onSpot ? "Register On-Spot" : "Register Now"}
+                </span>
+
+                {!event.onSpot && (
                   <svg
                     className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors"
                     fill="none"
@@ -244,7 +261,10 @@ const EventRegister = ({ }) => {
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
-                </div>
+                )}
+              </div>
+
+
               </div>
             </Card>
           ))}

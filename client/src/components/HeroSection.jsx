@@ -132,39 +132,10 @@ const HeroSection = () => {
             Explore Events
           </Link>
         </div>
-
-        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto px-4">
-          <div className="event-info card-spider p-4 sm:p-6 text-center">
-            <div className="text-3xl sm:text-4xl font-display text-primary mb-2">
-              12+
-            </div>
-            <div className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">
-              Events
-            </div>
-          </div>
-          <div className="event-info card-spider p-4 sm:p-6 text-center">
-            <div className="text-3xl sm:text-4xl font-display text-primary mb-2">
-              ₹20K+
-            </div>
-            <div className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">
-              Prize Pool
-            </div>
-          </div>
-          <div className="event-info card-spider p-4 sm:p-6 text-center">
-            <div className="text-3xl sm:text-4xl font-display text-primary mb-2">
-              200+
-            </div>
-            <div className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">
-              Participants
-            </div>
-          </div>
-        </div> */}
-
+        
         <CountDownTheTime/>
         
       </div>
-
-      
     </section>
   );
 };

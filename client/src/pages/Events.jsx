@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-
-
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -30,7 +27,7 @@ const eventsData = [
     Time: "10:15 AM – 01:00 PM",
     venue: "CSE Seminar Hall, Smart Class Room (ME I Year)",
     teamSize: "Individual or Team of Maximum 3 members",
-    prize: "",
+    prize: "1500",
     preRequistes: [
       "Presentation slides prepared in advance",
       "Topic finalized before submission",
@@ -66,7 +63,7 @@ const eventsData = [
     Time: "10:15 AM – 01:00 PM",
     venue: "Computer Lab II",
     teamSize: "Individual",
-    prize: "",
+    prize: "1300",
     preRequistes: ["Basic typing skills"],
     rules: [
       "Event conducted only on lab systems",
@@ -89,7 +86,7 @@ const eventsData = [
     Time: "11:00 AM – 11:45 AM",
     venue: "3rd Year CSE (Lab required)",
     teamSize: "Individual",
-    prize: "",
+    prize: "1300",
     preRequistes: [
       "The contest will be conducted on the HackerRank platform",
       "All participants must have an active HackerRank account before the contest begins",
@@ -119,7 +116,7 @@ const eventsData = [
     Time: "11:45 AM – 01:00 PM",
     venue: "ME CSE II Year",
     teamSize: "Individual (Solo Participation)",
-    prize: "",
+    prize: "1300",
     preRequistes: [
       "Strong debugging and problem-solving skills",
       "Familiarity with basic programming languages",
@@ -150,7 +147,7 @@ const eventsData = [
     Time: "01:30 PM – 03:00 PM",
     venue: "ME CSE II Year",
     teamSize: "Individual",
-    prize: "",
+    prize: "1300",
     preRequistes: ["Logical thinking and pseudocode knowledge"],
     rules: [
       "Paper and pen based event",
@@ -178,7 +175,7 @@ const eventsData = [
     Time: "10:15 AM – 11:00 AM",
     venue: "Main Auditorium",
     teamSize: "Individual",
-    prize: "",
+    prize: "1300",
     preRequistes: ["General technical knowledge"],
     rules: [
       "Individual participation",
@@ -200,7 +197,7 @@ const eventsData = [
     Time: "02:30 PM – 03:15 PM",
     venue: "3rd Year CSE",
     teamSize: "Individual",
-    prize: "",
+    prize: "1300",
     preRequistes: [
       "Laptop with required tools pre-installed",
       "Basic web development knowledge"
@@ -226,7 +223,7 @@ const eventsData = [
     Time: "11:00 AM – 11:45 AM",
     venue: "Main Auditorium",
     teamSize: "Individual",
-    prize: "",
+    prize: "1200",
     preRequistes: ["Basic aptitude preparation"],
     rules: [
       "Written examination",
@@ -248,7 +245,7 @@ const eventsData = [
     Time: "10:15 AM – 11:45 AM",
     venue: "2nd Year CSE",
     teamSize: "Team of Maximum 3 members",
-    prize: "",
+    prize: "1500",
     preRequistes: ["Interest in music and rhythm"],
     rules: [
       "Three rounds",
@@ -269,7 +266,7 @@ const eventsData = [
     Time: "02:30 PM – 03:15 PM",
     venue: "2nd Year CSE",
     teamSize: "Individual / Team of Maximum 3 members",
-    prize: "",
+    prize: "1300",
     preRequistes: ["Logical thinking skills"],
     rules: [
       "Three rounds",
@@ -290,7 +287,7 @@ const eventsData = [
     Time: "10:15 AM – 01:00 PM",
     venue: "Computer Lab IV",
     teamSize: "Individual",
-    prize: "",
+    prize: "1200",
     preRequistes: ["Personal device and creativity"],
     rules: [
       "Creativity, relevance to theme, originality, and presentation matter",
@@ -312,7 +309,7 @@ const eventsData = [
     Time: "10:15 AM – 01:00 PM",
     venue: "Open Space",
     teamSize: "Individual",
-    prize: "",
+    prize: "1300",
     preRequistes: ["Presence of mind, speed, and coordination"],
     sampleActivities: [
       "Memory Grid – observe a 7×7 or (n×n) grid for 10 seconds and recreate it",
@@ -338,7 +335,7 @@ const eventsData = [
     Time: "11:30 AM – 01:00 PM",
     venue: "Main Auditorium",
     teamSize: "Team of 2–5 members",
-    prize: "",
+    prize: "1500",
     preRequistes: ["Basic cricket knowledge and strategic thinking"],
     guidelines: [
       "Each team receives a virtual purse",
@@ -363,7 +360,7 @@ const eventsData = [
     Time: "01:30 PM – 02:30 PM",
     venue: "Open Space",
     teamSize: "Team of 2–5 members",
-    prize: "",
+    prize: "1500",
     guidelines: [
       "If team count exceeds 8, a preliminary round called Detective Quiz will be conducted",
       "Detective Quiz includes objective questions on crime, logic, observation, and detective reasoning"
