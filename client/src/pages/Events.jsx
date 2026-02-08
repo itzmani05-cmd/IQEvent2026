@@ -30,6 +30,7 @@ const eventsData = [
     Time: "10:15 AM – 01:00 PM",
     venue: "CSE Seminar Hall, Smart Class Room (ME I Year)",
     teamSize: "Individual or Team of Maximum 3 members",
+    prize: "",
     preRequistes: [
       "Presentation slides prepared in advance",
       "Topic finalized before submission",
@@ -65,6 +66,7 @@ const eventsData = [
     Time: "10:15 AM – 01:00 PM",
     venue: "Computer Lab II",
     teamSize: "Individual",
+    prize: "",
     preRequistes: ["Basic typing skills"],
     rules: [
       "Event conducted only on lab systems",
@@ -87,6 +89,7 @@ const eventsData = [
     Time: "11:00 AM – 11:45 AM",
     venue: "3rd Year CSE (Lab required)",
     teamSize: "Individual",
+    prize: "",
     preRequistes: [
       "The contest will be conducted on the HackerRank platform",
       "All participants must have an active HackerRank account before the contest begins",
@@ -116,6 +119,7 @@ const eventsData = [
     Time: "11:45 AM – 01:00 PM",
     venue: "ME CSE II Year",
     teamSize: "Individual (Solo Participation)",
+    prize: "",
     preRequistes: [
       "Strong debugging and problem-solving skills",
       "Familiarity with basic programming languages",
@@ -146,6 +150,7 @@ const eventsData = [
     Time: "01:30 PM – 03:00 PM",
     venue: "ME CSE II Year",
     teamSize: "Individual",
+    prize: "",
     preRequistes: ["Logical thinking and pseudocode knowledge"],
     rules: [
       "Paper and pen based event",
@@ -173,6 +178,7 @@ const eventsData = [
     Time: "10:15 AM – 11:00 AM",
     venue: "Main Auditorium",
     teamSize: "Individual",
+    prize: "",
     preRequistes: ["General technical knowledge"],
     rules: [
       "Individual participation",
@@ -194,6 +200,7 @@ const eventsData = [
     Time: "02:30 PM – 03:15 PM",
     venue: "3rd Year CSE",
     teamSize: "Individual",
+    prize: "",
     preRequistes: [
       "Laptop with required tools pre-installed",
       "Basic web development knowledge"
@@ -219,6 +226,7 @@ const eventsData = [
     Time: "11:00 AM – 11:45 AM",
     venue: "Main Auditorium",
     teamSize: "Individual",
+    prize: "",
     preRequistes: ["Basic aptitude preparation"],
     rules: [
       "Written examination",
@@ -236,10 +244,11 @@ const eventsData = [
     title: "Rhythm Reckon",
     description:
       "Rhythm Reckon is a music-based event designed to assess participants’ sense of rhythm, timing, and listening skills. The event consists of audio-based rounds where participants identify beats, rhythm patterns, and variations.",
-    category: "Fun",
+    category: "Non-Technical",
     Time: "10:15 AM – 11:45 AM",
     venue: "2nd Year CSE",
     teamSize: "Team of Maximum 3 members",
+    prize: "",
     preRequistes: ["Interest in music and rhythm"],
     rules: [
       "Three rounds",
@@ -256,10 +265,11 @@ const eventsData = [
     title: "Connections",
     description:
       "Connections is a logic-oriented event in which participants identify hidden relationships between given words, images, numbers, or concepts. The event emphasizes general knowledge, logical reasoning, and pattern recognition.",
-    category: "Fun",
+    category: "Non-Technical",
     Time: "02:30 PM – 03:15 PM",
     venue: "2nd Year CSE",
     teamSize: "Individual / Team of Maximum 3 members",
+    prize: "",
     preRequistes: ["Logical thinking skills"],
     rules: [
       "Three rounds",
@@ -276,10 +286,11 @@ const eventsData = [
     title: "Meme Creation",
     description:
       "Meme Creation is a creative event where participants design memes based on a given theme or topic using their own resources. The event encourages originality and creativity while maintaining appropriate and respectful content standards.",
-    category: "Fun",
+    category: "Non-Technical",
     Time: "10:15 AM – 01:00 PM",
     venue: "Computer Lab IV",
     teamSize: "Individual",
+    prize: "",
     preRequistes: ["Personal device and creativity"],
     rules: [
       "Creativity, relevance to theme, originality, and presentation matter",
@@ -297,10 +308,11 @@ const eventsData = [
     title: "Minute to Win",
     description:
       "Minute to Win is a time-bound activity-based event where participants must complete simple yet challenging tasks within one minute. The event evaluates presence of mind, speed, coordination, and the ability to perform under time pressure.",
-    category: "Fun",
-    Time: "10:15 AM - 01:00 PM",
+    category: "Non-Technical",
+    Time: "10:15 AM – 01:00 PM",
     venue: "Open Space",
     teamSize: "Individual",
+    prize: "",
     preRequistes: ["Presence of mind, speed, and coordination"],
     sampleActivities: [
       "Memory Grid – observe a 7×7 or (n×n) grid for 10 seconds and recreate it",
@@ -322,10 +334,11 @@ const eventsData = [
     title: "IPL Auction",
     description:
       "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
-    category: "Fun Event",
-    Time: "11:30 AM - 01:00 PM",
+    category: "Fun",
+    Time: "11:30 AM – 01:00 PM",
     venue: "Main Auditorium",
-    teamSize: "Team of 2-5 members",
+    teamSize: "Team of 2–5 members",
+    prize: "",
     preRequistes: ["Basic cricket knowledge and strategic thinking"],
     guidelines: [
       "Each team receives a virtual purse",
@@ -346,10 +359,11 @@ const eventsData = [
     title: "Treasure Hunt",
     description:
       "Get your team and navigate throughout the GCT campus looking out for QR codes and checkpoints to find the treasure.",
-    category: "Fun Event",
-    Time: "01:30 PM - 02:30 PM",
+    category: "Fun",
+    Time: "01:30 PM – 02:30 PM",
     venue: "Open Space",
-    teamSize: "Team of 2-5 members",
+    teamSize: "Team of 2–5 members",
+    prize: "",
     guidelines: [
       "If team count exceeds 8, a preliminary round called Detective Quiz will be conducted",
       "Detective Quiz includes objective questions on crime, logic, observation, and detective reasoning"
@@ -367,7 +381,7 @@ const eventsData = [
       { name: "Indhuja", number: "8870286793" }
     ]
   }
-];
+]
 
 const categories = ["All", "Technical", "Non-Technical", "Fun Event"];
 
@@ -509,8 +523,8 @@ const Events = () => {
       <Footer />
 
       {isModalOpen && selectedEvent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto card-spider p-4 md:p-8">
+        <div className="fixed inset-0 z-50 mt-20 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto card-spider p-4 md:p-8 mt-10">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors"
@@ -685,7 +699,7 @@ const Events = () => {
                     <ul className="space-y-2">
                       {selectedEvent.contact.map((person, index) => (
                         <li key={index} className="text-foreground">
-                          <span className="font-semibold">{person.name}</span> —{" "}
+                          <span className="font-semibold">{person.name}</span> - {" "}
                           <a
                             href={`tel:${person.number}`}
                             className="text-primary hover:underline"

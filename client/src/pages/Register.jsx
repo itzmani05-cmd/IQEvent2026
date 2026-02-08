@@ -64,7 +64,9 @@ const Register = ({selectedPass, onBack}) => {
         body: formData
       });
       
+      
       const data=await res.json();
+      console.log(data);
       setReferralCode(data.referralCode);
       message.success("Registration successfull!");
       setCurrentStep(2);

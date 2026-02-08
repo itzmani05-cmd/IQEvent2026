@@ -3,7 +3,6 @@ import Register from "../pages/Register";
 import { Card } from "antd";
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { eventConfig } from "./eventConfig";
 import { Code, Gamepad2, Users, Trophy} from "lucide-react";
 
 import Navbar from "@/components/Navbar";
