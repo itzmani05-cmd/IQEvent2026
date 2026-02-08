@@ -4,13 +4,23 @@ import gsap from 'gsap';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SpiderWebBackground from '@/components/SpiderWebBackground';
-import { Form, Input, Select, Button, message, Steps, Card, } from 'antd';
+import { Form, Input, Select, message, Steps, Card, } from 'antd';
 import { UserOutlined, MailOutlined, PhoneOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
 const Register = ({selectedPass, onBack}) => {
   
+  if (!selectedPass) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-muted-foreground">
+        Please select a pass first.
+      </div>
+    );
+  };
+
+  const amount = Number(selectedPass.amount);
+  const eventType = selectedPass.key;
 
   const [referralCode, setReferralCode] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
@@ -38,7 +48,10 @@ const Register = ({selectedPass, onBack}) => {
 
   const handleSubmit = async () => {
     try {
-      const value= await form.validateFields(); 
+      const value= await form.validateFields([
+         "usedReferralCode",
+          "transactionId"
+      ]); 
       if(!paymentImage){
         message.error("Please upload payment screenshot");
         return;
@@ -83,16 +96,6 @@ const Register = ({selectedPass, onBack}) => {
     { title: 'Payment', icon: <CheckCircleOutlined /> },
     { title: 'Confirmation', icon: <CheckCircleOutlined /> },
   ];
-
-  if (!selectedPass) {
-  return (
-    <div className="min-h-screen flex items-center justify-center text-muted-foreground">
-      Please select a pass first.
-    </div>
-  );
-}
-const amount = Number(selectedPass.amount);
-const eventType = selectedPass.key;
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -231,7 +234,7 @@ const eventType = selectedPass.key;
                 <div className="pt-6 flex justify-between">
                     <button
                       type="button"
-                      onClick={onBack}
+                      onClick={()=>onBack&&onBack()}
                       className="px-5 py-2 rounded-lg border border-primary/40 text-primary
                                 hover:bg-primary hover:text-white transition-all duration-300 font-semibold uppercase"
                     >
@@ -240,7 +243,14 @@ const eventType = selectedPass.key;
                     <button
                       type="button"
                       onClick={async()=>{
-                        const values= await form.validateFields();
+                        const values= await form.validateFields([
+                          "name",
+                          "email",
+                          "phone",
+                          "college",
+                          "department",
+                          "year",
+                        ]);
                         setFormValues(prev=>({...prev, ...values}));
                         setCurrentStep(1);
                       }}
