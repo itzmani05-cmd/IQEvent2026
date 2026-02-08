@@ -54,7 +54,7 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[9999] bg-gray-50 h-20 text-white">
+    <nav className="fixed top-0 left-0 right-0 z-[9999] h-20 text-white">
       <div className="container mx-auto px-6 bg-black">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center group">

@@ -169,7 +169,6 @@ const EventRegister = ({ }) => {
       <div className="">
         <Navbar/>
         <Register selectedPass={selectedPass} onBack={()=>setSelectedPass(null)} />
-        <Footer/>
       </div>
     )
   }

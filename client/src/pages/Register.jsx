@@ -375,7 +375,7 @@ const Register = ({selectedPass, onBack}) => {
                 </p>
               </div>
               <p className="text-sm text-muted-foreground">
-                Event Date: <span className="text-primary">March 15-16, 2026</span>
+                Event Date: <span className="text-primary">Feb 20, 2026</span>
               </p>
             </div>
           )}

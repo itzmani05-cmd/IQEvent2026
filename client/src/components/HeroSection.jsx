@@ -93,7 +93,7 @@ const HeroSection = () => {
           </div>
 
           <div className="mt-2 text-primary font-medium">
-            CSE Association Presents
+            Computer Science and Engineering Association Presents
           </div>
         </div>
 
