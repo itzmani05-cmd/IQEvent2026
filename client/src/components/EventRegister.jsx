@@ -88,7 +88,7 @@ const EventRegister = ({ }) => {
     icon: Gamepad2,
     teamSize: "Individual / Team",
     highlights: [
-      "Unlimited fun events",
+      "Unlimited Flagship Events",
       "Creative & gaming challenges",
       "Participation certificates",
     ],
@@ -163,8 +163,9 @@ const EventRegister = ({ }) => {
   };
 
   const handleSelect = (event) => {
-    if(event.onSpot) return;
-   setSelectedPass(event);
+    if(event.onSpot) 
+      return;
+    setSelectedPass(event);
   };
 
   if(selectedPass){
@@ -175,8 +176,6 @@ const EventRegister = ({ }) => {
       </div>
     )
   }
-
-  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary relative overflow-hidden">
@@ -206,15 +205,9 @@ const EventRegister = ({ }) => {
                          transition-all duration-300 cursor-pointer group
                          transform hover:-translate-y-3 hover:scale-[1.03]  ${event.onSpot ? "cursor-not-allowed opacity-90" : "cursor-pointer"} `}
               styles={{ body: { padding: "1.5rem" } }}
-              onMouseEnter={(e) => onEnter(e.currentTarget)}
-              onMouseLeave={(e) => onLeave(e.currentTarget)}
+              onMouseEnter={(e) => !event.onSpot && onEnter(e.currentTarget)}
+              onMouseLeave={(e) => !event.onSpot && onLeave(e.currentTarget)}
             >
-
-              {event.onSpot && (
-                <span className="absolute rounded-full">
-                
-                </span>
-              )}
 
               <div className="flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
@@ -242,7 +235,8 @@ const EventRegister = ({ }) => {
                 <div className="flex items-center gap-2 pt-4 border-t border-border/50">
                 <span
                   className={`text-xs font-medium uppercase tracking-wider
-                    ${event.onSpot ? "text-orange-400" : "text-primary"}`}
+                    ${event.onSpot ? "cursor-not-allowed opacity-80" : "cursor-pointer hover:border-primary hover:bg-primary/50hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-3 hover:scale-[1.03]"}
+                  `}
                 >
                   {event.onSpot ? "Register On-Spot" : "Register Now"}
                 </span>
@@ -263,14 +257,10 @@ const EventRegister = ({ }) => {
                   </svg>
                 )}
               </div>
-
-
               </div>
             </Card>
           ))}
-        </div> 
-
-       
+        </div>        
       </div>
       <Footer/>
     </div>

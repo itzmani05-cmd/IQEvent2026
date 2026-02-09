@@ -40,7 +40,7 @@ const featuredEvents = [
     title: "IPL Auction",
     description:
       "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
-    category: "Fun Event",
+    category: "Flagship Event",
     duration: "11:30 AM - 01:00 PM",
     teamSize: "Team of 2-5 members",
     prize: "₹1,500",

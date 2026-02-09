@@ -56,20 +56,20 @@ const eventsData = [
   },
 
   {
-    title: "Rush Hour (Typeracer / Key Stroker)",
+    title: "Logic Rush",
     description:
-      "A thrilling typing showdown where speed meets precision. Prove your typing skills before the timer hits zero!",
+      "From the given program code, the participant must mentally execute the code line by line and predict the exact output.",
     category: "Technical",
-    Time: "10:15 AM – 01:00 PM",
+    Time: "10:15 AM - 01:00 PM",
     venue: "Computer Lab II",
     teamSize: "Individual",
     prize: "1300",
-    preRequistes: ["Basic typing skills"],
+    preRequistes: ["Basic programming knowledge"],
     rules: [
-      "Event conducted only on lab systems",
-      "Maximum 2 attempts allowed (best score considered)",
-      "Only the last attempt will be considered for evaluation",
-      "Both Words Per Minute (WPM) and accuracy will be taken into account"
+      "Participants must explain the change in input variables line by line with clarity",
+      "Judges’ decisions are final",
+      "This will be a pen and paper round",
+      "Evaluation will be based on the quality of explanation and correct deduction of input-to-output flow"
     ],
     submission: "On-spot participation",
     contact: [
@@ -83,7 +83,7 @@ const eventsData = [
     description:
       "Step into Code Quest, a high-energy Hacker Rank coding contest that puts your logic, speed, and accuracy to the test. Solve challenging programming problems within a limited time and earn points for every correct solution. Outperform your peers, climb the leaderboard, and prove your coding prowess under pressure.",
     category: "Technical",
-    Time: "11:00 AM – 11:45 AM",
+    Time: "11:00 AM - 11:45 AM",
     venue: "3rd Year CSE (Lab required)",
     teamSize: "Individual",
     prize: "1300",
@@ -140,7 +140,7 @@ const eventsData = [
   },
 
   {
-    title: "Reverse Engineering",
+    title: "Reverse Engineering (Inferno)",
     description:
       "Reverse Engineering is a logic-based challenge where participants analyze given input–output pairs and identify the hidden logic behind them. Participants must express their solution using pseudocode only. No executable programming code is required. The event evaluates analytical thinking, pattern recognition, and algorithmic reasoning.",
     category: "Technical",
@@ -331,7 +331,7 @@ const eventsData = [
     title: "IPL Auction",
     description:
       "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
-    category: "Fun Event",
+    category: "Flagship Event",
     Time: "11:30 AM – 01:00 PM",
     venue: "Main Auditorium",
     teamSize: "Team of 2–5 members",
@@ -356,10 +356,10 @@ const eventsData = [
     title: "Treasure Hunt",
     description:
       "Get your team and navigate throughout the GCT campus looking out for QR codes and checkpoints to find the treasure.",
-    category: "Fun Event",
-    Time: "01:30 PM – 02:30 PM",
+    category: "Flagship Event",
+    Time: "01:30 PM - 02:30 PM",
     venue: "Open Space",
-    teamSize: "Team of 2–5 members",
+    teamSize: "Team of 2-5 members",
     prize: "1500",
     guidelines: [
       "If team count exceeds 8, a preliminary round called Detective Quiz will be conducted",
@@ -380,35 +380,41 @@ const eventsData = [
   }
 ]
 
-const categories = ["All", "Technical", "Non-Technical", "Fun Event"];
+const categories = ["All", "Technical", "Non-Technical", "Flagship Event"];
 
 const Events = () => {
+  const RULEBOOK="https://drive.google.com/file/d/1MyqMZ1b2LrbZZq8jsdR_CzgOOrBYCw4v/view?usp=drivesdk"
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
 
   useEffect(() => {
-    gsap.fromTo(
-      ".event-card-animate",
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger:0.08,
-        ease:'power2.out',
-        duration: 0.5,
-        scrollTrigger:{
-          trigger:".event-grid",
-          start:"top 80%",
-        },
-      }
-    );
-    ScrollTrigger.refresh();
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".event-card-animate",
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.08,
+          ease: "power2.out",
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: ".event-grid",
+            start: "top 80%",
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
   }, [selectedCategory]);
 
   const filteredEvents = eventsData.filter((event) => {
@@ -524,8 +530,8 @@ const Events = () => {
       <Footer />
 
       {isModalOpen && selectedEvent && (
-        <div className="fixed inset-0 z-50 mt-20 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto card-spider p-4 md:p-8 mt-10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="relative max-w-2xl w-full max-h-[75vh] overflow-y-auto card-spider p-4 md:p-8 mt-10">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors"
@@ -539,12 +545,7 @@ const Events = () => {
                 <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-primary text-primary-foreground rounded-full">
                   {selectedEvent.category}
                 </span>
-                {selectedEvent.Time && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium text-muted-foreground bg-secondary rounded-full">
-                    <Clock className="w-3 h-3" />
-                    {selectedEvent.Time}
-                  </span>
-                )}
+                
               </div>
 
               <h5 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
@@ -591,7 +592,7 @@ const Events = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground uppercase tracking-wider">
-                    Prize
+                    Prize Pool
                   </p>
                   <p className="font-semibold text-foreground">
                     {selectedEvent.prize}
@@ -714,7 +715,26 @@ const Events = () => {
                 </div>
               </div>
             )}
+           <div className="mb-6 p-5 bg-cyan-500/5 border-l-4 border-cyan-500 rounded-xl">
+              <div className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-cyan-400 mb-2 text-sm uppercase tracking-wider">
+                    Rule Book
+                  </h3>
+                  <a
+                    href={RULEBOOK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline font-medium"
+                  >
+                    View Rule Book →
+                  </a>
+                </div>
+              </div>
+            </div>
 
+            
             <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-border">
               <button
                 onClick={closeModal}
@@ -722,15 +742,23 @@ const Events = () => {
               >
                 Close
               </button>
-              <button
-                onClick={() => {
-                  closeModal();
-                  navigate("/register");
-                }}
-                className="btn-spider rounded-lg px-6 py-3 flex-1"
-              >
-                Register for Event
-              </button>
+              {selectedEvent.category==="Flagship Event"?(
+                <button
+                  className="btn-spider cursor-not-allowed rounded-lg px-6 py-3 flex-1"
+                >
+                  Register On-Spot
+                </button>
+              ):(
+                <button
+                  onClick={() => {
+                    closeModal();
+                    navigate("/register");
+                  }}
+                  className="btn-spider rounded-lg px-6 py-3 flex-1"
+                >
+                  Register for Event
+                </button>
+              )}
             </div>
           </div>
         </div>

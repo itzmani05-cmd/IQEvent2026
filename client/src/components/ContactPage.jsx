@@ -59,7 +59,7 @@ const ContactPage = () => {
                   >
                     <div>
                       <p className="text-foreground font-medium">{person.name}</p>
-                      <p className="text-muted-foreground text-sm">Event Coordinate</p>
+                      <p className="text-muted-foreground text-sm">Event Coordinator</p>
                     </div>
                     <a
                       href={`tel:${person.phone}`}
