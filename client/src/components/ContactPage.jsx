@@ -51,7 +51,7 @@ const ContactPage = () => {
               <div className="space-y-4">
                 {[
                   { name: "Devashree", phone: "+91 82485 50499" },
-                  { name: "Maharaja", phone: "+91 95856 11573" },
+                  { name: "Dhavamani", phone: "+91 97872 98534" },
                 ].map((person, i) => (
                   <div
                     key={i}

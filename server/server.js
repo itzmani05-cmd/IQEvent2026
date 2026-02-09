@@ -119,7 +119,7 @@ app.post("/register", upload.single("paymentProof"), async (req, res) => {
       referralCode,
       usedReferralCode,
       req.body.timestamp,
-      imageUrl, // ✅ ONLY THIS
+      imageUrl, 
     ]);
 
     res.json({
