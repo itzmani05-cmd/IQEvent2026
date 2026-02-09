@@ -8,18 +8,15 @@ const { appendRow, getSheetData } = require("./googleSheets");
 
 const app = express();
 
-/* ---------- MIDDLEWARE ---------- */
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-/* ---------- UPLOAD DIRECTORY ---------- */
 const uploadDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-/* ---------- MULTER CONFIG ---------- */
 const storage = multer.diskStorage({
   destination: (_, __, cb) => cb(null, uploadDir),
   filename: (_, file, cb) => {
@@ -32,7 +29,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   limits: {
-    fileSize: 2 * 1024 * 1024, // 2MB
+    fileSize: 2 * 1024 * 1024, 
   },
   fileFilter: (_, file, cb) => {
     if (!file.mimetype.startsWith("image/")) {
@@ -41,6 +38,9 @@ const upload = multer({
     cb(null, true);
   },
 });
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 
 function generateReferralCode() {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -82,7 +82,10 @@ app.post("/register", upload.single("paymentProof"), async (req, res) => {
       });
     }
 
-    /* ---------- REFERRAL CODE (UNIQUE) ---------- */
+    // ✅ Generate public image URL
+    const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+
+    /* ---------- REFERRAL CODE ---------- */
     const existingReferrals = await getSheetData(REF_SHEET);
     const existingCodes = new Set(existingReferrals.map(r => r[0]));
 
@@ -103,6 +106,7 @@ app.post("/register", upload.single("paymentProof"), async (req, res) => {
       new Date().toISOString(),
     ]);
 
+    /* ---------- LOG REGISTRATION ---------- */
     await appendRow(REG_SHEET, [
       req.body.name,
       req.body.email,
@@ -115,7 +119,7 @@ app.post("/register", upload.single("paymentProof"), async (req, res) => {
       referralCode,
       usedReferralCode,
       req.body.timestamp,
-      req.file.filename,
+      imageUrl, // ✅ ONLY THIS
     ]);
 
     res.json({
@@ -136,6 +140,7 @@ app.post("/register", upload.single("paymentProof"), async (req, res) => {
     });
   }
 });
+
 
 app.get("/", (_, res) => {
   res.send("Server running successfully");
