@@ -135,6 +135,7 @@ const EventRegister = ({ }) => {
     accent: "gold",
     onSpot: true,
     offer: true,
+    eventForm: "https://forms.gle/LbAWgV9AziWYcvmd8"
   },
   {
     key: "treasure",
@@ -154,9 +155,9 @@ const EventRegister = ({ }) => {
     accent: "red",
     onSpot: true,
     offer: true,
+    eventForm: "https://forms.gle/puuSZZZ7WDTRDknX7"
   },
 ];
-
 
   const onEnter = (el) => {
     gsap.to(el, {
@@ -174,6 +175,10 @@ const EventRegister = ({ }) => {
   };
 
   const handleSelect = (event) => {
+     if (event.externalForm) {
+      window.open(event.externalForm, "_blank");
+      return;
+    }
     setSelectedPass(event);
   };
 
@@ -260,18 +265,43 @@ const EventRegister = ({ }) => {
                   {event.teamSize}
                 </span>
 
-                <button
-                  className="
-                    px-4 py-2
-                    rounded-lg
-                    text-sm font-semibold
-                    bg-primary text-primary-foreground
-                    hover:opacity-90
-                    transition
-                  "
-                >
-                  Register
-                </button>
+                {event.eventForm ? (
+                  <a
+                    href={event.eventForm}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="
+                      px-4 py-2
+                      rounded-lg
+                      text-sm font-semibold
+                      bg-primary text-primary-foreground
+                      hover:opacity-90
+                      transition
+                    "
+                  >
+                    Register via Google Form
+                  </a>
+                ) : (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSelect(event);
+                    }}
+                    className="
+                      px-4 py-2
+                      rounded-lg
+                      text-sm font-semibold
+                      bg-primary text-primary-foreground
+                      hover:opacity-90
+                      transition
+                    "
+                  >
+                    Register
+                  </button>
+                )}
+
+
               </div>
             </div>
           </Card>
