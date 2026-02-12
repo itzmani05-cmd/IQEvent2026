@@ -26,7 +26,7 @@ const eventsData = [
     description:
       "Presentrix is a technical presentation contest that provides a platform for participants to showcase their knowledge, ideas, and innovations in Computer Science and emerging technologies. The event evaluates technical depth, creativity, and communication skills, challenging participants to present their concepts clearly and confidently.",
     category: "Technical",
-    Time: "10:15 AM – 01:00 PM",
+    Time: "10:15 AM - 01:00 PM",
     venue: "CSE Seminar Hall, Smart Class Room (ME I Year)",
     teamSize: "Individual or Team of Maximum 3 members",
     prize: "1500",
@@ -46,7 +46,7 @@ const eventsData = [
       "Participants are encouraged to select innovative or real-world problem-solving topics",
       "Slides should be clear, concise, and visually focused (avoid excessive text)",
       "Evaluation is based on innovation, impact, presentation skills, and Q&A handling",
-      "Presentations must be submitted via email before 6:00 PM on 15th February",
+      "Presentations must be submitted via email before 8:00 PM on 18th February",
       "Late submissions will not be accepted",
       "The decision of the jury is final and binding"
     ],
@@ -337,7 +337,7 @@ const eventsData = [
     Time: "11:30 AM - 01:00 PM",
     venue: "Main Auditorium",
     teamSize: "Team of 1-5 members",
-    prize: "2,300",
+    prize: "2,000",
     preRequistes: ["Basic cricket knowledge and strategic thinking"],
     guidelines: [
       "Each team receives a virtual purse",
@@ -362,7 +362,7 @@ const eventsData = [
     Time: "01:30 PM - 02:30 PM",
     venue: "Open Space",
     teamSize: "Team of 2-5 members",
-    prize: "2,300",
+    prize: "2,000",
     guidelines: [
       "If team count exceeds 8, a preliminary round called Detective Quiz will be conducted",
       "Detective Quiz includes objective questions on crime, logic, observation, and detective reasoning"

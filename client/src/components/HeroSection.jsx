@@ -12,21 +12,18 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(
         titleRef.current,
         { y: 100, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
       );
 
-      // Subtitle animation
       gsap.fromTo(
         subtitleRef.current,
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, delay: 0.3, ease: "power2.out" }
       );
 
-      // Buttons animation
       gsap.fromTo(
         ".hero-btn",
         { y: 30, opacity: 0 },
@@ -40,7 +37,6 @@ const HeroSection = () => {
         }
       );
 
-      // Event info animation
       gsap.fromTo(
         ".event-info",
         { y: 20, opacity: 0 },
@@ -54,7 +50,6 @@ const HeroSection = () => {
         }
       );
 
-      // Meta info animation
       gsap.fromTo(
         metaRef.current,
         { y: 20, opacity: 0 },
@@ -178,7 +173,6 @@ const HeroSection = () => {
             Explore Events
           </Link>
         </div>
-
 
         <CountDownTheTime/>
         

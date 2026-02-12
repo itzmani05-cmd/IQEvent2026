@@ -61,14 +61,15 @@ const EventRegister = ({ }) => {
     return () => ctx.revert();
   }, []);
 
-  const events = [
+ const events = [
   {
     key: "tech",
     title: "Tech Pass",
     subtitle: "Technical Events + Paper Presentation",
     description:
       "Participate in all technical events including coding contests, debugging, quizzes, and technical presentations.",
-    price: 249,
+    originalPrice: 249,
+    offerPrice: 230,
     icon: Code,
     teamSize: "Individual / Team",
     highlights: [
@@ -77,14 +78,16 @@ const EventRegister = ({ }) => {
       "Certificate for each event",
     ],
     accent: "blue",
+    offer: true,
   },
   {
     key: "nontech",
     title: "Non-Tech Pass",
-    subtitle: "Fun & Creative Events",
+    subtitle: "Fun & Creative Events + Paper Presentation",
     description:
       "Enjoy exciting non-technical events like games, quizzes, creative challenges, and fun activities.",
-    price: 199,
+    originalPrice: 219,
+    offerPrice: 200, 
     icon: Gamepad2,
     teamSize: "Individual / Team",
     highlights: [
@@ -93,6 +96,7 @@ const EventRegister = ({ }) => {
       "Participation certificates",
     ],
     accent: "purple",
+    offer: true,
   },
   {
     key: "combo",
@@ -100,7 +104,8 @@ const EventRegister = ({ }) => {
     subtitle: "Tech + Non-Tech (Best Value)",
     description:
       "Get complete access to all technical and non-technical events at the best price.",
-    price: 299,
+    originalPrice: 299,
+    offerPrice: 260,
     icon: Users,
     teamSize: "Individual / Team",
     highlights: [
@@ -110,42 +115,48 @@ const EventRegister = ({ }) => {
     ],
     badge: "Most Popular",
     accent: "green",
+    offer: true,
   },
   {
     key: "ipl",
     title: "IPL Auction",
     subtitle: "Flagship Event",
     description:
-      "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
-    price: 249,
+      "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget.",
+    originalPrice: 249,
+    offerPrice: 230,
     icon: Trophy,
-    teamSize: "2–5 Members",
+    teamSize: "1-5 Members",
     highlights: [
       "Live auction format",
       "Team strategy & bidding",
       "Exciting prizes",
     ],
     accent: "gold",
-    onSpot:true
+    onSpot: true,
+    offer: true,
   },
   {
     key: "treasure",
     title: "Treasure Hunt",
     subtitle: "Adventure & Teamwork",
     description:
-      "Get your team and navigate throughout the GCT campus looking out for QR codes and checkpoints to find the treasure.",
-    price: 249,
+      "Navigate the GCT campus solving QR-based clues and checkpoints to find the treasure.",
+    originalPrice: 249,
+    offerPrice: 230,
     icon: Trophy,
-    teamSize: "2-5 Members",
+    teamSize: "1-5 Members",
     highlights: [
       "Campus-wide hunt",
       "QR & logic-based clues",
       "High-energy teamwork",
     ],
     accent: "red",
-    onSpot:true
+    onSpot: true,
+    offer: true,
   },
-  ];
+];
+
 
   const onEnter = (el) => {
     gsap.to(el, {
@@ -163,8 +174,6 @@ const EventRegister = ({ }) => {
   };
 
   const handleSelect = (event) => {
-    if(event.onSpot) 
-      return;
     setSelectedPass(event);
   };
 
@@ -194,71 +203,78 @@ const EventRegister = ({ }) => {
 
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto event-pass-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto event-pass-grid mb-10">
           {events.map((event, index) => (
             <Card
               key={event.key}
               hoverable
               onClick={() => handleSelect(event)}
-              className={`relative event-pass-card border-2 border-border rounded-2xl bg-card/60 backdrop-blur-xl
-                         hover:border-primary hover:bg-primary/5 hover:shadow-2xl hover:shadow-primary/30
-                         transition-all duration-300 cursor-pointer group
-                         transform hover:-translate-y-3 hover:scale-[1.03]  ${event.onSpot ? "cursor-not-allowed opacity-90" : "cursor-pointer"} `}
-              styles={{ body: { padding: "1.5rem" } }}
-              onMouseEnter={(e) => !event.onSpot && onEnter(e.currentTarget)}
-              onMouseLeave={(e) => !event.onSpot && onLeave(e.currentTarget)}
+              className="
+                relative event-pass-card
+                rounded-2xl
+                bg-card/70 backdrop-blur-xl
+                border border-border
+                transition-all duration-300
+                hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/20
+                cursor-pointer
+              "
+              styles={{ body: { padding: "1.75rem" } }}
             >
+            <div className="flex flex-col h-full">
 
-              <div className="flex flex-col h-full">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="event-icon p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <event.icon className="w-6 h-6 text-primary group-hover:text-accent transition-colors" />
-                  </div>
-                  <div className="text-right">
-                    <div className="event-price text-2xl font-bold text-primary group-hover:text-accent transition-colors">
-                      ₹{event.price}
-                    </div>
-                    <div className="text-xs text-muted-foreground mt-1">
-                      {event.teamSize}
-                    </div>
-                  </div>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 rounded-xl bg-primary/10">
+                  <event.icon className="w-6 h-6 text-primary" />
                 </div>
 
-                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {event.title}
-                </h3>
+                <div className="text-right">
+                  <p className="text-[11px] text-muted-foreground">
+                    On-Spot ₹{event.originalPrice}
+                  </p>
+                  <p className="text-3xl font-bold text-primary leading-none">
+                    ₹{event.offerPrice}
+                  </p>
+                  <p className="text-[11px] text-green-400">
+                    Save ₹{event.originalPrice - event.offerPrice} online
+                  </p>
+                </div>
+              </div>
 
-                <p className="text-muted-foreground text-sm flex-grow mb-4">
-                  {event.description}
-                </p>
+              {/* Title */}
+              <h3 className="text-xl font-bold text-foreground mb-1">
+                {event.title}
+              </h3>
+              <p className="text-xs text-muted-foreground mb-3">
+                {event.subtitle}
+              </p>
 
-                <div className="flex items-center gap-2 pt-4 border-t border-border/50">
-                <span
-                  className={`text-xs font-medium uppercase tracking-wider
-                    ${event.onSpot ? "cursor-not-allowed opacity-80" : "cursor-pointer hover:border-primary hover:bg-primary/50hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-3 hover:scale-[1.03]"}
-                  `}
-                >
-                  {event.onSpot ? "Register On-Spot" : "Register Now"}
+              {/* Description */}
+              <p className="text-sm text-muted-foreground flex-grow mb-4">
+                {event.description}
+              </p>
+
+              {/* Footer */}
+              <div className="pt-4 border-t border-border/50 flex items-center justify-between">
+                <span className="text-xs text-muted-foreground">
+                  {event.teamSize}
                 </span>
 
-                {!event.onSpot && (
-                  <svg
-                    className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                )}
+                <button
+                  className="
+                    px-4 py-2
+                    rounded-lg
+                    text-sm font-semibold
+                    bg-primary text-primary-foreground
+                    hover:opacity-90
+                    transition
+                  "
+                >
+                  Register
+                </button>
               </div>
-              </div>
-            </Card>
+            </div>
+          </Card>
           ))}
         </div>        
       </div>
