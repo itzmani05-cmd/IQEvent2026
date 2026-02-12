@@ -43,7 +43,7 @@ const featuredEvents = [
     category: "Flagship Event",
     duration: "11:30 AM - 01:00 PM",
     teamSize: "Team of 1-5 members",
-    prize: "₹2,300",
+    prize: "₹2,000",
     onSpot:true
   },
 ];

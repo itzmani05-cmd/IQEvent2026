@@ -19,12 +19,7 @@ const EventCard = ({
         </span>
       </div>
 
-      {onSpot && (
-        <div className="absolute top-4 right-4 z-10 flex items-center gap-1 bg-yellow-400/90 text-black px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg">
-          <Zap size={12} />
-          On Spot
-        </div>
-      )}
+     
 
       <div className="p-6 pt-16 relative z-10">
         <h3 className="font-display text-2xl text-foreground mb-3 transition-colors duration-300 group-hover:text-primary">
