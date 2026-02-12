@@ -42,8 +42,8 @@ const featuredEvents = [
       "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
     category: "Flagship Event",
     duration: "11:30 AM - 01:00 PM",
-    teamSize: "Team of 2-5 members",
-    prize: "₹1,500",
+    teamSize: "Team of 1-5 members",
+    prize: "₹2,300",
     onSpot:true
   },
 ];
@@ -86,7 +86,7 @@ const Index = () => {
 
       <section
         id="about"
-        className="py-20 bg-secondary/20 relative"
+        className="py-10 bg-secondary/20 relative"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">

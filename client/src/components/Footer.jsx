@@ -1,33 +1,26 @@
 import { Instagram, Linkedin, Mail, MapPin, ArrowRight } from "lucide-react";
 import logo from "../assets/logopic.png";
+import {Link} from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="bg-black text-muted-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 pb-6">
-        {/* Main grid */}
         <div className="grid gap-10 sm:gap-12 md:grid-cols-3">
-
-          {/* Brand & Address */}
           <div className="space-y-5 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-3">
-              <img
-                src={logo}
-                alt="InfoQuest Logo"
-                className="w-11 h-11 object-contain"
-              />
-              <span className="font-display font-bold text-xl sm:text-2xl tracking-[0.15em] text-white uppercase">
-                INFO
-                <span className="text-primary">QUEST</span>
-                <span className="text-primary text-sm font-extrabold ml-2">
-                  ’26
-                </span>
-              </span>
+              <Link to="/" className="flex items-center gap-2">
+                <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
+                  <span className="font-bold text-xl tracking-widest">
+                    INFO<span className="text-primary">QUEST</span>
+                    <sup className="text-primary ml-1">'26</sup>
+                  </span>
+              </Link>
             </div>
 
             <p className="text-sm leading-relaxed">
               Government College of Technology <br />
-              Thadagam Road, Coimbatore – 641013 <br />
+              Thadagam Road, Coimbatore - 641013 <br />
               Tamil Nadu
             </p>
 
@@ -48,8 +41,6 @@ const Footer = () => {
               <ArrowRight size={14} />
             </a>
           </div>
-
-          {/* Contact */}
           <div className="text-center md:text-left">
             <h4 className="text-primary font-semibold mb-5 tracking-wide">
               CONTACT

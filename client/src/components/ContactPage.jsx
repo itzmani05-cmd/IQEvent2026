@@ -16,16 +16,15 @@ const ContactPage = () => {
     a: 'Yes, all participants will receive an e-certificate of participation.', 
   }, 
   { 
-    q: 'What is referral code?', 
-    a: 'A referral code is a unique code generated during registration that allows you to earn cashback by inviting friends.', 
-  }, 
-  { 
     q: 'How can I generate a referral code?', 
     a: 'Your referral code is automatically generated after you complete registration.', 
   }, 
   { q: 'With how many people can I share the referral code?', 
     a: 'You can share your referral code with multiple people - there\'s no limit!', 
-  } 
+  },{
+    q:"How does the referral code work?",
+    a:"If someone registers using your referral code, ₹20 will be credited to your account one day before the event."
+  }
 ];
 
   return (
@@ -51,7 +50,7 @@ const ContactPage = () => {
               <div className="space-y-4">
                 {[
                   { name: "Devashree", phone: "+91 82485 50499" },
-                  { name: "Dhavamani", phone: "+91 97872 98534" },
+                  { name: "Maharaja", phone: "+91 95856 11573" },
                 ].map((person, i) => (
                   <div
                     key={i}

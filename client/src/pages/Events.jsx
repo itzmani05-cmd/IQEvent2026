@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
+
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -284,7 +286,7 @@ const eventsData = [
     description:
       "Meme Creation is a creative event where participants design memes based on a given theme or topic using their own resources. The event encourages originality and creativity while maintaining appropriate and respectful content standards.",
     category: "Non-Technical",
-    Time: "10:15 AM – 01:00 PM",
+    Time: "10:15 AM - 01:00 PM",
     venue: "Computer Lab IV",
     teamSize: "Individual",
     prize: "1200",
@@ -312,9 +314,9 @@ const eventsData = [
     prize: "1300",
     preRequistes: ["Presence of mind, speed, and coordination"],
     sampleActivities: [
-      "Memory Grid – observe a 7×7 or (n×n) grid for 10 seconds and recreate it",
-      "Bottle Flip Combo – land maximum flips in 60 seconds",
-      "Ping-Pong Bounce – bounce ball into cups"
+      "Memory Grid - observe a 7*7 or (n*n) grid for 10 seconds and recreate it",
+      "Bottle Flip Combo - land maximum flips in 60 seconds",
+      "Ping-Pong Bounce - bounce ball into cups"
     ],
     rules: [
       "Tasks must be completed within 60 seconds",
@@ -332,10 +334,10 @@ const eventsData = [
     description:
       "A simulated cricket auction where participants act as team owners to assemble the strongest squad under a fixed budget. Teams are evaluated on squad balance, strategy, and decision-making.",
     category: "Flagship Event",
-    Time: "11:30 AM – 01:00 PM",
+    Time: "11:30 AM - 01:00 PM",
     venue: "Main Auditorium",
-    teamSize: "Team of 2–5 members",
-    prize: "1500",
+    teamSize: "Team of 1-5 members",
+    prize: "2,300",
     preRequistes: ["Basic cricket knowledge and strategic thinking"],
     guidelines: [
       "Each team receives a virtual purse",
@@ -360,7 +362,7 @@ const eventsData = [
     Time: "01:30 PM - 02:30 PM",
     venue: "Open Space",
     teamSize: "Team of 2-5 members",
-    prize: "1500",
+    prize: "2,300",
     guidelines: [
       "If team count exceeds 8, a preliminary round called Detective Quiz will be conducted",
       "Detective Quiz includes objective questions on crime, logic, observation, and detective reasoning"
@@ -383,13 +385,10 @@ const eventsData = [
 const categories = ["All", "Technical", "Non-Technical", "Flagship Event"];
 
 const Events = () => {
-  const RULEBOOK="https://drive.google.com/file/d/1MyqMZ1b2LrbZZq8jsdR_CzgOOrBYCw4v/view?usp=drivesdk"
-  const navigate = useNavigate();
+  const RULEBOOK="https://drive.google.com/file/d/1LfhK4KopwwDcvnkectcsckeGBVrETSOE/view?usp=sharing"
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -674,6 +673,7 @@ const Events = () => {
                 </div>
               </div>
             )}
+
             {selectedEvent.submission && (
               <div className="mb-6 p-5 bg-green-500/5 border-l-4 border-green-500 rounded-xl">
                 <div className="flex items-start gap-3">
@@ -715,7 +715,8 @@ const Events = () => {
                 </div>
               </div>
             )}
-           <div className="mb-6 p-5 bg-cyan-500/5 border-l-4 border-cyan-500 rounded-xl">
+
+            <div className="mb-6 p-5 bg-cyan-500/5 border-l-4 border-cyan-500 rounded-xl">
               <div className="flex items-start gap-3">
                 <FileText className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                 <div>
@@ -733,38 +734,90 @@ const Events = () => {
                 </div>
               </div>
             </div>
-
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-border">
-              <button
-                onClick={closeModal}
-                className="px-6 py-3 rounded-lg border border-border hover:bg-secondary transition-colors"
-              >
-                Close
-              </button>
-              {selectedEvent.category==="Flagship Event"?(
-                <button
-                  className="btn-spider cursor-not-allowed rounded-lg px-6 py-3 flex-1"
-                >
-                  Register On-Spot
-                </button>
-              ):(
-                <button
-                  onClick={() => {
-                    closeModal();
-                    navigate("/register");
-                  }}
-                  className="btn-spider rounded-lg px-6 py-3 flex-1"
-                >
-                  Register for Event
-                </button>
-              )}
+            <div className="pt-6 border-t border-border">
+ 
+                {selectedEvent.category === "Flagship Event" && (
+                  <div className="mb-5 p-4 rounded-lg bg-yellow-500/5 border border-yellow-500/20 text-center">
+                    <p className="text-xs text-yellow-400 italic leading-relaxed">
+                      Note: To participate in this event, you must register for any one pass.
+                      <br />
+                      On-spot registration is also available.
+                    </p>
+                  </div>
+                )}
+
+                {/* Action buttons */}
+                <div className="flex flex-col-reverse sm:flex-row gap-4">
+                  {/* Close button (secondary) */}
+                  <button
+                    onClick={closeModal}
+                    className="
+                      w-full sm:w-auto
+                      px-6 py-3
+                      rounded-lg
+                      border border-border
+                      text-muted-foreground
+                      hover:text-foreground
+                      hover:bg-secondary
+                      transition-all
+                    "
+                  >
+                    Close
+                  </button>
+
+                  {/* Register button (primary) */}
+                  {selectedEvent.category === "Flagship Event" ? (
+                    <a
+                      href={
+                        selectedEvent.title === "IPL Auction"
+                          ? "https://forms.gle/LbAWgV9AziWYcvmd8"
+                          : "https://forms.gle/puuSZZZ7WDTRDknX7"
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        w-full sm:flex-1
+                        py-3
+                        text-center
+                        font-semibold uppercase tracking-wider text-sm
+                        rounded-lg
+                        bg-primary text-primary-foreground
+                        hover:opacity-90
+                        transition-all
+                        shadow-spider
+                      "
+                    >
+                      Register Now
+                    </a>
+                  ) : (
+                    <Link
+                      to="/register"
+                      className="
+                        w-full sm:flex-1
+                        py-3
+                        text-center
+                        font-semibold uppercase tracking-wider text-sm
+                        rounded-lg
+                        bg-primary text-primary-foreground
+                        hover:opacity-90
+                        transition-all
+                        shadow-spider
+                      "
+                    >
+                      Register Now
+                    </Link>
+                  )}
+                </div>
             </div>
+
           </div>
+          
         </div>
-      )}
+      )};
+  
     </div>
   );
-};
+}
 
 export default Events;

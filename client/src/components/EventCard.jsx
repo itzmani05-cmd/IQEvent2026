@@ -39,19 +39,40 @@ const EventCard = ({
           <InfoItem icon={<Users />} value={teamSize} />
           <InfoItem icon={<Trophy />} value={prize} />
         </div>
+        
         {category === "Flagship Event" ? (
-          <div className="space-y-3">
-            <p className="text-xs text-muted-foreground text-center italic">
-              Note: To participate in this event, you must register for any one pass.
-            </p>
-
-            <div
-              className="relative block w-full py-3 text-center font-semibold uppercase tracking-wider text-sm rounded-lg
-                        border border-primary text-primary bg-primary/5
-                        cursor-not-allowed"
-            >
-              Register On-Spot
+          <div className="">
+            <div className="space-y-3 mb-6">
+                <p className="text-xs text-muted-foreground text-center italic">
+                  Note: To participate in this event, you must register for any one pass.
+                  <br/> On-Spot also available
+                </p>     
             </div>
+            {title==="IPL Auction" ?(
+              <a
+                href="https://forms.gle/LbAWgV9AziWYcvmd8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full py-3 text-center font-semibold uppercase tracking-wider text-sm rounded-lg
+                          border border-primary text-primary overflow-hidden
+                          transition-all duration-300
+                          hover:text-primary-foreground hover:bg-primary"
+              >
+                Register Now
+              </a>
+            ) :(
+              <a
+                href="https://forms.gle/puuSZZZ7WDTRDknX7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full py-3 text-center font-semibold uppercase tracking-wider text-sm rounded-lg
+                          border border-primary text-primary overflow-hidden
+                          transition-all duration-300
+                          hover:text-primary-foreground hover:bg-primary"
+              >
+                Register Now
+              </a>
+            )}
           </div>
         ) : (
           <Link
@@ -63,9 +84,7 @@ const EventCard = ({
           >
             Register Now
           </Link>
-        )}
-
-              
+        )}      
       </div>
 
       <div className="absolute top-0 right-0 w-24 h-24 opacity-20 group-hover:opacity-40 transition-opacity">
