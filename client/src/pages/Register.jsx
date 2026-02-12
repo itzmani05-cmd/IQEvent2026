@@ -19,7 +19,7 @@ const Register = ({selectedPass, onBack}) => {
     );
   };
 
-  const amount = Number(selectedPass.price);
+  const amount = Number(selectedPass.offerPrice);
   const eventType = selectedPass.key;
 
   const [referralCode, setReferralCode] = useState(null);
