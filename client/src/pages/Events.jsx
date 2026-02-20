@@ -768,14 +768,14 @@ const Events = () => {
 
                   {/* Register button (primary) */}
                   {selectedEvent.category === "Flagship Event" ? (
-                    <a
-                      href={
-                        selectedEvent.title === "IPL Auction"
-                          ? "https://forms.gle/LbAWgV9AziWYcvmd8"
-                          : "https://forms.gle/puuSZZZ7WDTRDknX7"
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <p
+                      // href={
+                      //   selectedEvent.title === "IPL Auction"
+                      //     ? "https://forms.gle/LbAWgV9AziWYcvmd8"
+                      //     : "https://forms.gle/puuSZZZ7WDTRDknX7"
+                      // }
+                      // target="_blank"
+                      // rel="noopener noreferrer"
                       className="
                         w-full sm:flex-1
                         py-3
@@ -789,10 +789,10 @@ const Events = () => {
                       "
                     >
                       Register Now
-                    </a>
+                    </p>
                   ) : (
-                    <Link
-                      to="/register"
+                    <p
+                      // to="/register"
                       className="
                         w-full sm:flex-1
                         py-3
@@ -803,10 +803,11 @@ const Events = () => {
                         hover:opacity-90
                         transition-all
                         shadow-spider
+                        cursor-not-allowed
                       "
                     >
                       Register Now
-                    </Link>
+                    </p>
                   )}
                 </div>
             </div>

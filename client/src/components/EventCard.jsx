@@ -46,7 +46,7 @@ const EventCard = ({
                 </p>     
             </div>
         )}
-            <button
+            <p
                 // href="https://forms.gle/LbAWgV9AziWYcvmd8"
                 // target="_blank"
                 // rel="noopener noreferrer"
@@ -56,7 +56,7 @@ const EventCard = ({
                           hover:text-primary-foreground hover:bg-primary"
               >
                 On Spot
-              </button>
+              </p>
             
       </div>
 

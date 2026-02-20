@@ -266,7 +266,7 @@ const EventRegister = ({ }) => {
                 </span>
 
                
-                  <button
+                  <p
                     // href={event.eventForm}
                     // target="_blank"
                     // rel="noopener noreferrer"
@@ -281,7 +281,7 @@ const EventRegister = ({ }) => {
                     "
                   >
                     On Spot
-                  </button>
+                  </p>
               </div>
             </div>
           </Card>
