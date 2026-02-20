@@ -167,12 +167,12 @@ const Index = () => {
             Choose the event package that best matches your interests and skills.
           </p>
 
-          <button
+          <p
             // onClick={() => navigate("/register")}
             className="btn-spider px-10 py-4 rounded-xl text-lg font-semibold
              hover:scale-105 transition-transform duration-300 cursor-not-allowed">
             Click here!
-          </button>
+          </p>
         </div>
       <ContactPage />
       <Footer />
