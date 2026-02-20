@@ -79,9 +79,11 @@ const Navbar = () => {
                 </Link>
               )
             )}
-            <Link to="/register" className="btn-spider px-3 py-1 rounded cursor-not-allowed">
+            <button 
+              // to="/register" 
+              className="btn-spider px-3 py-1 rounded cursor-not-allowed">
               Register Now
-            </Link>
+            </button>
           </div>
 
           <button
@@ -120,12 +122,12 @@ const Navbar = () => {
                 )
               )}
 
-              <Link
-                to="/register"
-                className="mobile-nav-link btn-spider block text-center mt-4"
+              <button
+                // to="/register"
+                className="mobile-nav-link btn-spider block text-center mt-4 cursor-not-allowed"
               >
                 Register Now
-              </Link>
+              </button>
             </div>
           </div>,
           document.body
