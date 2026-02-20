@@ -60,6 +60,7 @@ const Register = ({selectedPass, onBack}) => {
         message.error("Please upload payment screenshot");
         return;
       }     
+      message.info("Please wait a moment...");
       const finalData={
         ...formValues,
         ...value,
@@ -82,8 +83,10 @@ const Register = ({selectedPass, onBack}) => {
       
       const data=await res.json();
       setReferralCode(data.referralCode);
-      message.success("Registration successfull!");
-      setCurrentStep(2);
+      setTimeout(()=>{
+        setCurrentStep(2);
+        message.success("Registration successfull!");
+      },1000);      
     } 
     catch {
       message.error('Please fill all required fields');
@@ -332,7 +335,6 @@ const Register = ({selectedPass, onBack}) => {
 
                 <div className="flex justify-between pt-6">
                   <button
-
                     onClick={() => setCurrentStep(0)}
                     className="btn-spider-outline rounded-lg"
                   >

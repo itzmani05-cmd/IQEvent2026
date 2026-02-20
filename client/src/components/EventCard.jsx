@@ -11,6 +11,8 @@ const EventCard = ({
   prize,
   onSpot,
 }) => {
+  const isFlagship = category === "Flagship Event";
+  
   return (
     <div className="card-spider group relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,0,0,0.25)]">
       <div className="absolute top-4 left-4 z-10">
@@ -18,8 +20,6 @@ const EventCard = ({
           {category}
         </span>
       </div>
-
-     
 
       <div className="p-6 pt-16 relative z-10">
         <h3 className="font-display text-2xl text-foreground mb-3 transition-colors duration-300 group-hover:text-primary">
@@ -32,54 +32,32 @@ const EventCard = ({
         <div className="grid grid-cols-3 gap-3 mb-6">
           <InfoItem icon={<Clock />} value={Time || duration} />
           <InfoItem icon={<Users />} value={teamSize} />
-          <InfoItem icon={<Trophy />} value={prize} />
+          <InfoItem
+            icon={<Trophy />}
+            value={isFlagship ? "₹249" : prize}
+          />
         </div>
         
-        {category === "Flagship Event" ? (
-          <div className="">
+        {category === "Flagship Event" && (
             <div className="space-y-3 mb-6">
                 <p className="text-xs text-muted-foreground text-center italic">
                   Note: To participate in this event, you must register for any one pass.
                   <br/> On-Spot also available
                 </p>     
             </div>
-            {title==="IPL Auction" ?(
-              <a
-                href="https://forms.gle/LbAWgV9AziWYcvmd8"
-                target="_blank"
-                rel="noopener noreferrer"
+        )}
+            <button
+                // href="https://forms.gle/LbAWgV9AziWYcvmd8"
+                // target="_blank"
+                // rel="noopener noreferrer"
                 className="relative block w-full py-3 text-center font-semibold uppercase tracking-wider text-sm rounded-lg
                           border border-primary text-primary overflow-hidden
                           transition-all duration-300
                           hover:text-primary-foreground hover:bg-primary"
               >
-                Register Now
-              </a>
-            ) :(
-              <a
-                href="https://forms.gle/puuSZZZ7WDTRDknX7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative block w-full py-3 text-center font-semibold uppercase tracking-wider text-sm rounded-lg
-                          border border-primary text-primary overflow-hidden
-                          transition-all duration-300
-                          hover:text-primary-foreground hover:bg-primary"
-              >
-                Register Now
-              </a>
-            )}
-          </div>
-        ) : (
-          <Link
-            to="/register"
-            className="relative block w-full py-3 text-center font-semibold uppercase tracking-wider text-sm rounded-lg
-                      border border-primary text-primary overflow-hidden
-                      transition-all duration-300
-                      hover:text-primary-foreground hover:bg-primary"
-          >
-            Register Now
-          </Link>
-        )}      
+                On Spot
+              </button>
+            
       </div>
 
       <div className="absolute top-0 right-0 w-24 h-24 opacity-20 group-hover:opacity-40 transition-opacity">

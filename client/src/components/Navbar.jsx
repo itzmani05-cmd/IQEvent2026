@@ -79,7 +79,7 @@ const Navbar = () => {
                 </Link>
               )
             )}
-            <Link to="/register" className="btn-spider px-3 py-1 rounded">
+            <Link to="/register" className="btn-spider px-3 py-1 rounded cursor-not-allowed">
               Register Now
             </Link>
           </div>

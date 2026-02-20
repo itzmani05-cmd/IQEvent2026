@@ -168,9 +168,9 @@ const Index = () => {
           </p>
 
           <button
-            onClick={() => navigate("/register")}
+            // onClick={() => navigate("/register")}
             className="btn-spider px-10 py-4 rounded-xl text-lg font-semibold
-             hover:scale-105 transition-transform duration-300">
+             hover:scale-105 transition-transform duration-300 cursor-not-allowed">
             Click here!
           </button>
         </div>

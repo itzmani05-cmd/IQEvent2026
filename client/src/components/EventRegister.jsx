@@ -265,29 +265,12 @@ const EventRegister = ({ }) => {
                   {event.teamSize}
                 </span>
 
-                {event.eventForm ? (
-                  <a
-                    href={event.eventForm}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="
-                      px-4 py-2
-                      rounded-lg
-                      text-sm font-semibold
-                      bg-primary text-primary-foreground
-                      hover:opacity-90
-                      transition
-                    "
-                  >
-                    Register via Google Form
-                  </a>
-                ) : (
+               
                   <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleSelect(event);
-                    }}
+                    // href={event.eventForm}
+                    // target="_blank"
+                    // rel="noopener noreferrer"
+                    // onClick={(e) => e.stopPropagation()}
                     className="
                       px-4 py-2
                       rounded-lg
@@ -297,11 +280,8 @@ const EventRegister = ({ }) => {
                       transition
                     "
                   >
-                    Register
+                    On Spot
                   </button>
-                )}
-
-
               </div>
             </div>
           </Card>

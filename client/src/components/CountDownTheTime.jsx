@@ -22,27 +22,27 @@ const getTimeLeft = () => {
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft(getTimeLeft());
-    }, 1000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTimeLeft(getTimeLeft());
+  //   }, 1000);
 
-    gsap.fromTo(
-      ".countdown-box",
-      { y: 20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.15,
-        duration: 0.6,
-        ease: "power2.out",
-      }
-    );
+  //   gsap.fromTo(
+  //     ".countdown-box",
+  //     { y: 20, opacity: 0 },
+  //     {
+  //       y: 0,
+  //       opacity: 1,
+  //       stagger: 0.15,
+  //       duration: 0.6,
+  //       ease: "power2.out",
+  //     }
+  //   );
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  const Item = ({ value, label }) => (
+  const Item = ({ value, label }) => (  
     <div className="countdown-box flex flex-col items-center bg-black/50 backdrop-blur-md rounded-xl px-5 mb-20 py-4 min-w-[80px]">
       <span className="text-3xl md:text-4xl font-display font-bold text-primary">
         {String(value).padStart(2, "0")}
@@ -55,10 +55,11 @@ const CountdownTimer = () => {
 
   return (
     <div className="flex justify-center gap-3 sm:gap-5 mt-10">
-      <Item value={timeLeft.days} label="Days" />
+      {/* <Item value={timeLeft.days} label="Days" />
       <Item value={timeLeft.hours} label="Hours" />
       <Item value={timeLeft.minutes} label="Minutes" />
-      <Item value={timeLeft.seconds} label="Seconds" />
+      <Item value={timeLeft.seconds} label="Seconds" /> */}
+      {/* Date: 20-02-2024 */}
     </div>
   );
 };

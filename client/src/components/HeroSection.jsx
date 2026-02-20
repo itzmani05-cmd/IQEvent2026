@@ -154,6 +154,7 @@ const HeroSection = () => {
               px-6 py-3.5 sm:px-8 sm:py-4
               text-sm sm:text-base
               text-center
+              cursor-not-allowed
             "
           >
             Register Now

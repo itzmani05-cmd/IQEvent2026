@@ -26,10 +26,10 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/events" element={<Events/>} />
-      <Route
+      {/* <Route
         path="/register"
         element={<EventRegister/>}
-      />
+      /> */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
