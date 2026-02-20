@@ -145,8 +145,8 @@ const HeroSection = () => {
 
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-10 sm:mb-14 px-4">
-          <Link
-            to="/register"
+          <p
+            // to="/register"
             className="
               hero-btn btn-spider
               w-full sm:w-auto
@@ -158,7 +158,7 @@ const HeroSection = () => {
             "
           >
             Register Now
-          </Link>
+          </p>
 
           <Link
             to="/events"
